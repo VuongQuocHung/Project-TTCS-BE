@@ -1,0 +1,38 @@
+package com.ttcs.backend.service;
+
+import com.ttcs.backend.entity.Review;
+import com.ttcs.backend.repository.ReviewRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class ReviewService {
+    private final ReviewRepository reviewRepository;
+
+    public List<Review> getAllReviews() {
+        return reviewRepository.findAll();
+    }
+
+    public Review getReviewById(Long id) {
+        return reviewRepository.findById(id).orElseThrow(() -> new RuntimeException("Review not found"));
+    }
+
+    public Review createReview(Review review) {
+        return reviewRepository.save(review);
+    }
+
+    public Review updateReview(Long id, Review reviewDetails) {
+        Review review = getReviewById(id);
+        review.setRating(reviewDetails.getRating());
+        review.setComment(reviewDetails.getComment());
+        return reviewRepository.save(review);
+    }
+
+    public void deleteReview(Long id) {
+        Review review = getReviewById(id);
+        reviewRepository.delete(review);
+    }
+}
