@@ -6,10 +6,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -18,12 +20,23 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    // 1. GET ALL
+    // 1. GET ALL (with filtering & pagination)
     @GetMapping
-    @Operation(summary = "Lấy danh sách tất cả người dùng", description = "Trả về danh sách toàn bộ người dùng trong hệ thống")
+    @Operation(summary = "Lấy danh sách người dùng", description = "Trả về danh sách người dùng hỗ trợ lọc theo email, tên, số điện thoại, vai trò và phân trang")
     @ApiResponse(responseCode = "200", description = "Thành công")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<Page<User>> getUsers(
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String fullName,
+            @RequestParam(required = false) String phone,
+            @RequestParam(required = false) Long roleId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return ResponseEntity.ok(userService.getFilteredUsers(email, fullName, phone, roleId, pageable));
     }
 
     // 2. POST CREATE

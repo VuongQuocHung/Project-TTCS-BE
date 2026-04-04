@@ -2,7 +2,11 @@ package com.ttcs.backend.service;
 
 import com.ttcs.backend.entity.Review;
 import com.ttcs.backend.repository.ReviewRepository;
+import com.ttcs.backend.specification.ReviewSpecs;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +18,14 @@ public class ReviewService {
 
     public List<Review> getAllReviews() {
         return reviewRepository.findAll();
+    }
+
+    public Page<Review> getFilteredReviews(Long productId, Long userId, Integer rating, Pageable pageable) {
+        Specification<Review> spec = Specification.where(ReviewSpecs.withFetchData())
+                .and(ReviewSpecs.hasProductId(productId))
+                .and(ReviewSpecs.hasUserId(userId))
+                .and(ReviewSpecs.hasRating(rating));
+        return reviewRepository.findAll(spec, pageable);
     }
 
     public Review getReviewById(Long id) {

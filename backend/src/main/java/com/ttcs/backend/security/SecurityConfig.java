@@ -31,34 +31,38 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Cấp quyền truy cập công khai cho tất cả Swagger/OpenAPI resources & Auth endpoints
+                        // 1. Cấp quyền truy cập công khai cho tất cả Swagger/OpenAPI resources & Auth
+                        // endpoints
                         .requestMatchers(
-                                "/v3/api-docs/**", 
-                                "/swagger-ui/**", 
-                                "/swagger-ui.html", 
-                                "/api/docs/**",
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/docs/**",
                                 "/api/swagger-ui/**",
                                 "/swagger-resources/**",
-                                "/webjars/**"
-                        ).permitAll()
+                                "/webjars/**")
+                        .permitAll()
                         .requestMatchers("/api/auth/**", "/error").permitAll()
-                        
+
                         // 2. Các API GET công khai
-                        .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/categories/**", "/api/products/**", "/api/reviews/**").permitAll()
-                        
+                        .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/categories/**", "/api/products/**",
+                                "/api/reviews/**")
+                        .permitAll()
+
                         // 3. Các API cần quyền CUSTOMER hoặc ADMIN
                         .requestMatchers(HttpMethod.GET, "/api/orders/**").hasAnyRole("CUSTOMER", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/orders/**").hasAnyRole("CUSTOMER", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/reviews/**").hasRole("CUSTOMER")
-                        
+
                         // 4. Các API chỉ dành riêng cho ADMIN
                         .requestMatchers(HttpMethod.PUT, "/api/orders/*/status").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/orders/**").hasRole("ADMIN")
-                        .requestMatchers("/api/brands/**", "/api/categories/**", "/api/products/**", "/api/users/**", "/api/roles/**").hasRole("ADMIN")
-                        
+                        .requestMatchers("/api/brands/**", "/api/categories/**", "/api/products/**", "/api/users/**",
+                                "/api/roles/**")
+                        .hasRole("ADMIN")
+
                         // 5. Mọi request khác đều phải được xác thực
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

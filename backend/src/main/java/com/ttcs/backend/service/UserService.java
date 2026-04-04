@@ -2,7 +2,11 @@ package com.ttcs.backend.service;
 
 import com.ttcs.backend.entity.User;
 import com.ttcs.backend.repository.UserRepository;
+import com.ttcs.backend.specification.UserSpecs;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +23,15 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public Page<User> getFilteredUsers(String email, String fullName, String phone, Long roleId, Pageable pageable) {
+        Specification<User> spec = Specification.where(UserSpecs.withFetchRole())
+                .and(UserSpecs.hasEmail(email))
+                .and(UserSpecs.hasFullName(fullName))
+                .and(UserSpecs.hasPhone(phone))
+                .and(UserSpecs.hasRoleId(roleId));
+        return userRepository.findAll(spec, pageable);
     }
 
     public User getUserById(Long id) {

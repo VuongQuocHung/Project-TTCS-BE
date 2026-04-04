@@ -6,9 +6,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -18,12 +23,32 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    // 1. GET ALL
+    // 1. GET ALL (with advanced filtering & pagination)
     @GetMapping
-    @Operation(summary = "Lấy danh sách tất cả sản phẩm", description = "Trả về danh sách toàn bộ sản phẩm laptop đang có trong hệ thống")
+    @Operation(summary = "Lấy danh sách sản phẩm", description = "Trả về danh sách sản phẩm hỗ trợ lọc đa điều kiện (multi-select) và phân trang")
     @ApiResponse(responseCode = "200", description = "Thành công")
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
+    public ResponseEntity<Page<Product>> getProducts(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Long brandId,
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) BigDecimal minPrice,
+            @RequestParam(required = false) BigDecimal maxPrice,
+            @RequestParam(required = false) List<String> cpu,
+            @RequestParam(required = false) List<String> ram,
+            @RequestParam(required = false) List<String> storage,
+            @RequestParam(required = false) List<String> vga,
+            @RequestParam(required = false) List<String> screen,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        return ResponseEntity.ok(productService.getFilteredProducts(
+                name, brandId, categoryId, minPrice, maxPrice,
+                cpu, ram, storage, vga, screen, pageable));
     }
 
     // 2. POST CREATE

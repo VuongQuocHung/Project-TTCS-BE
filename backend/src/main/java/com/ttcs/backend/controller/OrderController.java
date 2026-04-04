@@ -7,10 +7,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -19,12 +23,25 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    // 1. GET ALL
+    // 1. GET ALL (with filtering & pagination)
     @GetMapping
-    @Operation(summary = "Lấy danh sách tất cả đơn hàng", description = "Trả về danh sách toàn bộ đơn đặt hàng trong hệ thống")
+    @Operation(summary = "Lấy danh sách đơn hàng", description = "Trả về danh sách đơn hàng hỗ trợ lọc đa điều kiện và phân trang")
     @ApiResponse(responseCode = "200", description = "Thành công")
-    public List<Order> getAllOrders() {
-        return orderService.getAllOrders();
+    public ResponseEntity<Page<Order>> getOrders(
+            @RequestParam(required = false) OrderStatus status,
+            @RequestParam(required = false) Long userId,
+            @RequestParam(required = false) String phoneNumber,
+            @RequestParam(required = false) BigDecimal minAmount,
+            @RequestParam(required = false) BigDecimal maxAmount,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return ResponseEntity
+                .ok(orderService.getFilteredOrders(status, userId, phoneNumber, minAmount, maxAmount, pageable));
     }
 
     // 2. POST CREATE

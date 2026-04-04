@@ -2,7 +2,11 @@ package com.ttcs.backend.service;
 
 import com.ttcs.backend.entity.Category;
 import com.ttcs.backend.repository.CategoryRepository;
+import com.ttcs.backend.specification.CategorySpecs;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +18,11 @@ public class CategoryService {
 
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
+    }
+
+    public Page<Category> getFilteredCategories(String name, Pageable pageable) {
+        Specification<Category> spec = Specification.where(CategorySpecs.hasName(name));
+        return categoryRepository.findAll(spec, pageable);
     }
 
     public Category getCategoryById(Long id) {

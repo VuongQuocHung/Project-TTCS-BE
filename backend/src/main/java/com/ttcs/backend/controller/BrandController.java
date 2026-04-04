@@ -6,10 +6,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/brands")
@@ -18,12 +20,20 @@ import java.util.List;
 public class BrandController {
     private final BrandService brandService;
 
-    // 1. GET ALL
+    // 1. GET ALL (with filtering & pagination)
     @GetMapping
-    @Operation(summary = "Lấy danh sách tất cả thương hiệu", description = "Trả về danh sách toàn bộ thương hiệu hiện có trong hệ thống")
+    @Operation(summary = "Lấy danh sách thương hiệu", description = "Trả về danh sách thương hiệu hỗ trợ lọc theo tên và phân trang")
     @ApiResponse(responseCode = "200", description = "Thành công")
-    public List<Brand> getAllBrands() {
-        return brandService.getAllBrands();
+    public ResponseEntity<Page<Brand>> getBrands(
+            @RequestParam(required = false) String name,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return ResponseEntity.ok(brandService.getFilteredBrands(name, pageable));
     }
 
     // 2. POST CREATE
