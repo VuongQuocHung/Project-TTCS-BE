@@ -2,6 +2,9 @@ package com.ttcs.backend.controller;
 
 import com.ttcs.backend.entity.Category;
 import com.ttcs.backend.service.CategoryService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,30 +14,51 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/categories")
 @RequiredArgsConstructor
+@Tag(name = "Category API", description = "Quản lý danh mục sản phẩm")
 public class CategoryController {
     private final CategoryService categoryService;
 
+    // 1. GET ALL
     @GetMapping
+    @Operation(summary = "Lấy danh sách tất cả danh mục", description = "Trả về danh sách toàn bộ danh mục sản phẩm hiện có")
+    @ApiResponse(responseCode = "200", description = "Thành công")
     public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
-        return ResponseEntity.ok(categoryService.getCategoryById(id));
-    }
-
+    // 2. POST CREATE
     @PostMapping
+    @Operation(summary = "Tạo mới danh mục", description = "Thêm một danh mục sản phẩm mới vào hệ thống")
+    @ApiResponse(responseCode = "200", description = "Thành công")
+    @ApiResponse(responseCode = "400", description = "Lỗi dữ liệu đầu vào")
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
 
+    // 3. GET BY ID
+    @GetMapping("/{id}")
+    @Operation(summary = "Lấy thông tin danh mục theo ID", description = "Lấy thông tin chi tiết của một danh mục dựa trên ID")
+    @ApiResponse(responseCode = "200", description = "Thành công")
+    @ApiResponse(responseCode = "404", description = "Không tìm thấy danh mục")
+    public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
+        return ResponseEntity.ok(categoryService.getCategoryById(id));
+    }
+
+    // 4. PUT/PATCH UPDATE
     @PutMapping("/{id}")
+    @Operation(summary = "Cập nhật danh mục", description = "Cập nhật thông tin của một danh mục đã tồn tại dựa trên ID")
+    @ApiResponse(responseCode = "200", description = "Thành công")
+    @ApiResponse(responseCode = "400", description = "Lỗi dữ liệu đầu vào")
+    @ApiResponse(responseCode = "404", description = "Không tìm thấy danh mục")
     public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
         return ResponseEntity.ok(categoryService.updateCategory(id, category));
     }
 
+    // 5. DELETE
     @DeleteMapping("/{id}")
+    @Operation(summary = "Xóa danh mục", description = "Xóa một danh mục khỏi hệ thống dựa trên ID")
+    @ApiResponse(responseCode = "204", description = "Xóa thành công")
+    @ApiResponse(responseCode = "404", description = "Không tìm thấy danh mục")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.noContent().build();
