@@ -1,6 +1,7 @@
 package com.ttcs.backend.service;
 
 import com.ttcs.backend.entity.Order;
+import com.ttcs.backend.entity.OrderStatus;
 import com.ttcs.backend.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order updateOrderStatus(Long id, String status) {
+    public Order updateOrderStatus(Long id, OrderStatus status) {
         Order order = getOrderById(id);
         order.setStatus(status);
         return orderRepository.save(order);

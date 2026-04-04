@@ -1,6 +1,7 @@
 package com.ttcs.backend.controller;
 
 import com.ttcs.backend.entity.Order;
+import com.ttcs.backend.entity.OrderStatus;
 import com.ttcs.backend.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -50,7 +51,7 @@ public class OrderController {
     @ApiResponse(responseCode = "200", description = "Thành công")
     @ApiResponse(responseCode = "400", description = "Lỗi dữ liệu đầu vào")
     @ApiResponse(responseCode = "404", description = "Không tìm thấy đơn hàng")
-    public ResponseEntity<Order> updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
+    public ResponseEntity<Order> updateOrderStatus(@PathVariable Long id, @RequestParam OrderStatus status) {
         return ResponseEntity.ok(orderService.updateOrderStatus(id, status));
     }
 

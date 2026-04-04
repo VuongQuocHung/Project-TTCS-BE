@@ -30,8 +30,9 @@ public class Order {
     @Column(name = "order_date", updatable = false)
     private LocalDateTime orderDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
-    private String status; // PENDING, APPROVED, CANCELLED, DELIVERED
+    private OrderStatus status;
 
     @Column(name = "total_amount", nullable = false, precision = 15, scale = 2)
     private BigDecimal totalAmount;
