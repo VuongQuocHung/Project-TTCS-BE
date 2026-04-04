@@ -1,61 +1,96 @@
-# Project TTCS Backend (Laptop Store API)
+# Laptop Store API (Backend)
 
-Đây là mã nguồn Backend cho dự án bán Laptop (Laptop Store), được xây dựng bằng **Java Spring Boot**, **Hibernate (JPA)** và **Spring Security**. Cơ sở dữ liệu sử dụng là **Microsoft SQL Server**.
+Hệ thống Backend mạnh mẽ và có khả năng mở rộng cho ứng dụng Cửa hàng Laptop, được xây dựng bằng **Spring Boot 3**, **MySQL** và **Xác thực JWT**. Dự án này cung cấp đầy đủ các RESTful API để quản lý sản phẩm, danh mục, thương hiệu, đơn hàng và đánh giá của người dùng.
 
-## Yêu cầu hệ thống (Prerequisites)
-Để chạy dự án này trên máy cá nhân, bạn cần cài đặt:
-- **Java Development Kit (JDK) 17** trở lên.
-- **Microsoft SQL Server** (Bản Developer).
+---
 
-## Hướng dẫn cài đặt Cơ sở dữ liệu (Database Setup)
-1. Mở **SQL Server Configuration Manager**, đảm bảo đã bật (Enable) giao thức TCP/IP ở port `1433` cho IP `127.0.0.1` (localhost).
-2. Mở **SQL Server Management Studio (SSMS)**.
-3. Tạo một database trống có tên: **`laptop_store`**.
-```sql
-CREATE DATABASE laptop_store;
-```
-*(Hệ thống Hibernate cấu hình `ddl-auto=update` sẽ tự động tạo các bảng (tables) khi chạy ứng dụng).*
+## 🛠️ Công nghệ sử dụng
 
-## Cấu hình ứng dụng
-Các cấu hình chính (Cổng server, Thông tin cấu hình Database, Tài khoản Security mặc định) nằm trong file `backend/src/main/resources/application.properties`:
-- **Port:** `8080`
-- **Database URL:** `jdbc:sqlserver://localhost:1433;databaseName=laptop_store...`
-- **Database User/Pass:** `sa` / `123456`
-- **Spring Security Mặc định:** `admin` / `123456`
+-   **Framework**: Spring Boot 3.4.4
+-   **Cơ sở dữ liệu**: MySQL
+-   **Bảo mật**: Spring Security 6 + JJWT (JSON Web Token)
+-   **Truy cập dữ liệu**: Spring Data JPA + Hibernate
+-   **Xác thực dữ liệu**: Jakarta Bean Validation
+-   **Tài liệu API**: SpringDoc OpenAPI (Swagger)
+-   **Công cụ hỗ trợ**: Lombok
 
-*(Đảm bảo tài khoản `sa` trong SQL Server của bạn có mật khẩu tương ứng và đã được phép đăng nhập).*
+---
 
-## Hướng dẫn chạy dự án (Local Development)
+## 📋 Yêu cầu hệ thống
 
-### Cách 1: Chạy bằng Terminal/Command Prompt
-1. Mở Terminal và di chuyển vào thư mục `backend`:
-   ```bash
-   cd backend
-   ```
-2. Thực thi lệnh sau để khởi động Spring Boot:
-   ```bash
-   # Dành cho Windows:
-   .\mvnw.cmd spring-boot:run
-   
-   # Dành cho MacOS/Linux:
-   ./mvnw spring-boot:run
-   ```
+Để chạy dự án này, hãy đảm bảo bạn đã cài đặt:
+-   **Java Development Kit (JDK) 17** trở lên.
+-   **Maven** 3.x.
+-   **MySQL Server** (Phiên bản 8.0 hoặc tương đương).
 
-## Kiểm tra / Test API
-- Mở trình duyệt và truy cập: `http://localhost:8080`
-- Nếu màn hình hiển thị form "Please sign in" của Spring Security, hãy đăng nhập với tài khoản:
-  - **Username:** `admin`
-  - **Password:** `123456`
-- Bạn có thể sử dụng **Postman** hoặc **Insomnia** để kiểm thử các REST API (Nhớ truyền Basic Auth kèm Username/Password trên vào các request nếu chưa code token JWT).
+---
 
-## Cấu trúc thư mục cơ bản
-```
+## ⚙️ Cài đặt & Cấu hình
+
+### 1. Thiết lập Cơ sở dữ liệu
+1.  Mở terminal MySQL hoặc trình quản lý (ví dụ: MySQL Workbench).
+2.  Tạo một cơ sở dữ liệu mới có tên `laptop_store`:
+    ```sql
+    CREATE DATABASE laptop_store;
+    ```
+    *(Hệ thống Hibernate sẽ tự động tạo các bảng vì cấu hình `spring.jpa.hibernate.ddl-auto=update` đã được bật)*.
+
+### 2. Cấu hình ứng dụng
+Kiểm tra file `backend/src/main/resources/application.properties` để biết các thiết lập sau:
+-   **Cổng (Port)**: `8080` (mặc định)
+-   **Kết nối MySQL**: Cập nhật `spring.datasource.username` và `spring.datasource.password` để phù hợp với máy của bạn.
+-   **JWT Secret**: Đối với môi trường phát triển, một khóa mặc định đã được cung cấp, nhưng nên thay đổi khi triển khai thực tế.
+
+### 3. Thông tin Admin mặc định
+Theo cấu hình mặc định, hệ thống có sẵn tài khoản quản trị:
+-   **Email**: `admin@gmail.com`
+-   **Mật khẩu**: `admin`
+
+---
+
+## 🏃 Hướng dẫn khởi chạy
+
+1.  Di chuyển vào thư mục `backend`:
+    ```bash
+    cd backend
+    ```
+2.  Khởi động server Spring Boot bằng Maven wrapper:
+    ```bash
+    # Đối với Windows:
+    .\mvnw.cmd spring-boot:run
+    
+    # Đối với MacOS/Linux:
+    ./mvnw spring-boot:run
+    ```
+
+---
+
+## 📖 Tài liệu API (Swagger)
+
+Sau khi ứng dụng đã chạy, bạn có thể kiểm thử các API qua Swagger UI:
+-   **Đường dẫn**: [http://localhost:8080/docs](http://localhost:8080/docs)
+
+### Quy trình xác thực (Cách dùng JWT):
+1.  **Đăng nhập**: Gửi request `POST` đến `/api/auth/login` với thông tin tài khoản.
+2.  **Nhận Token**: Bạn sẽ nhận được chuỗi `token` trong phản hồi JSON.
+3.  **Sử dụng**: Trong Swagger hoặc Postman, thêm header: `Authorization: Bearer <your_token>`.
+
+---
+
+## 📂 Cấu trúc thư mục
+
+```text
 backend/
  ├── src/main/java/com/ttcs/backend
- │    ├── controller/      # Nơi chứa các API Endpoints (Ví dụ: UserController, OrderController)
- │    ├── model/           # Nơi chứa các entities maps với bảng trong cơ sở dữ liệu
- │    ├── repository/      # Chứa các interface thao tác với DB qua Spring Data JPA
- │    └── service/         # Nơi chứa logic nghiệp vụ (Business logic)
+ │    ├── auth/          # Các DTO cho xác thực
+ │    ├── config/        # Cấu hình ứng dụng/CORS
+ │    ├── controller/    # Các đầu nối API (User, Product, Order, v.v.)
+ │    ├── entity/        # Các thực thể JPA (Bảng cơ sở dữ liệu)
+ │    ├── exception/     # Logic xử lý lỗi toàn cục
+ │    ├── repository/    # Lớp truy xuất dữ liệu
+ │    ├── security/      # Cấu hình bảo mật, xử lý JWT
+ │    ├── service/       # Lớp xử lý nghiệp vụ
+ │    └── specification/ # JPA Specification cho tìm kiếm nâng cao
  └── src/main/resources/
-      └── application.properties # File cấu hình server và database
+      └── application.properties # File cấu hình chính
 ```
