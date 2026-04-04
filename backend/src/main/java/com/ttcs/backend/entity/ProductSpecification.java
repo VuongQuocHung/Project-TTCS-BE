@@ -2,6 +2,7 @@ package com.ttcs.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "product_specifications")
@@ -18,6 +19,7 @@ public class ProductSpecification {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false, unique = true)
+    @JsonIgnore
     private Product product;
 
     private String cpu;

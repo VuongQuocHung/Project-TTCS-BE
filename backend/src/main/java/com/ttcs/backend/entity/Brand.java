@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "brands")
@@ -25,5 +26,6 @@ public class Brand {
     private String logoUrl;
 
     @OneToMany(mappedBy = "brand")
+    @JsonIgnore
     private List<Product> products;
 }
