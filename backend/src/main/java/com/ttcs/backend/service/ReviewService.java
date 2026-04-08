@@ -2,11 +2,13 @@ package com.ttcs.backend.service;
 
 import com.ttcs.backend.entity.Review;
 import com.ttcs.backend.repository.ReviewRepository;
+import com.ttcs.backend.security.SecurityUtils;
 import com.ttcs.backend.specification.ReviewSpecs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +40,15 @@ public class ReviewService {
 
     public Review updateReview(Long id, Review reviewDetails) {
         Review review = getReviewById(id);
+
+        // Authorization check: User can only update their own review
+        Long currentUserId = SecurityUtils.getCurrentUserId()
+                .orElseThrow(() -> new AccessDeniedException("Vui lòng đăng nhập"));
+
+        if (!review.getUser().getId().equals(currentUserId)) {
+            throw new AccessDeniedException("Bạn không có quyền sửa đánh giá này");
+        }
+
         review.setRating(reviewDetails.getRating());
         review.setComment(reviewDetails.getComment());
         return reviewRepository.save(review);
@@ -45,6 +56,17 @@ public class ReviewService {
 
     public void deleteReview(Long id) {
         Review review = getReviewById(id);
+
+        // Authorization check: User can delete their own review OR Admin can delete any
+        if (!SecurityUtils.hasRole("ADMIN")) {
+            Long currentUserId = SecurityUtils.getCurrentUserId()
+                    .orElseThrow(() -> new AccessDeniedException("Vui lòng đăng nhập"));
+
+            if (!review.getUser().getId().equals(currentUserId)) {
+                throw new AccessDeniedException("Bạn không có quyền xóa đánh giá này");
+            }
+        }
+
         reviewRepository.delete(review);
     }
 }

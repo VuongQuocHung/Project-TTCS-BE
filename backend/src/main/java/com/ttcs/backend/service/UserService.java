@@ -1,13 +1,16 @@
 package com.ttcs.backend.service;
 
+import com.ttcs.backend.auth.dto.UserResponse;
 import com.ttcs.backend.entity.User;
 import com.ttcs.backend.repository.UserRepository;
+import com.ttcs.backend.security.SecurityUtils;
 import com.ttcs.backend.specification.UserSpecs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -35,7 +38,18 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy người dùng"));
+
+        // Authorization check
+        if (!SecurityUtils.hasRole("ADMIN")) {
+            Long currentUserId = SecurityUtils.getCurrentUserId()
+                    .orElseThrow(() -> new AccessDeniedException("Vui lòng đăng nhập"));
+
+            if (!user.getId().equals(currentUserId)) {
+                throw new AccessDeniedException("Bạn không có quyền truy cập thông tin này");
+            }
+        }
+        return user;
     }
 
     public User createUser(User user) {
@@ -51,6 +65,16 @@ public class UserService {
 
     public User updateUser(Long id, User userDetails) {
         User user = getUserById(id);
+
+        // Authorization check (getUserById already does some, but we repeat for clarity or specialized update rules)
+        if (!SecurityUtils.hasRole("ADMIN")) {
+            Long currentUserId = SecurityUtils.getCurrentUserId()
+                    .orElseThrow(() -> new AccessDeniedException("Vui lòng đăng nhập"));
+
+            if (!user.getId().equals(currentUserId)) {
+                throw new AccessDeniedException("Bạn không có quyền cập nhật thông tin này");
+            }
+        }
 
         String normalizedEmail = userDetails.getEmail().trim().toLowerCase(Locale.ROOT);
         if (!user.getEmail().equals(normalizedEmail) && userRepository.existsByEmail(normalizedEmail)) {
@@ -72,5 +96,16 @@ public class UserService {
     public void deleteUser(Long id) {
         User user = getUserById(id);
         userRepository.delete(user);
+    }
+
+    public UserResponse getUserProfile(Long id) {
+        User user = getUserById(id);
+        return UserResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .fullName(user.getFullName())
+                .phone(user.getPhone())
+                .roleName(user.getRole().getName())
+                .build();
     }
 }

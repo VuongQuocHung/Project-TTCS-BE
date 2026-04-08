@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
@@ -39,6 +40,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(buildErrorResponse(
                 status,
                 ex.getReason() == null ? status.getReasonPhrase() : ex.getReason(),
+                request.getRequestURI(),
+                null
+        ));
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Map<String, Object>> handleAccessDeniedException(AccessDeniedException ex,
+                                                                          HttpServletRequest request) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(buildErrorResponse(
+                HttpStatus.FORBIDDEN,
+                ex.getMessage(),
                 request.getRequestURI(),
                 null
         ));
