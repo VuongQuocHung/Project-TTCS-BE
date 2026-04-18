@@ -31,7 +31,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (path == null || path.isEmpty()) {
             path = request.getRequestURI();
         }
-        return pathMatcher.match("/api/auth/**", path) ||
+        return pathMatcher.match("/api/auth/login", path) ||
+                pathMatcher.match("/api/auth/register", path) ||
+                pathMatcher.match("/api/auth/logout", path) ||
+                pathMatcher.match("/api/auth/forgot-password", path) ||
+                pathMatcher.match("/api/auth/reset-password", path) ||
                 pathMatcher.match("/v3/api-docs/**", path) ||
                 pathMatcher.match("/swagger-ui/**", path) ||
                 pathMatcher.match("/docs", path) ||

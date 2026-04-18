@@ -31,6 +31,7 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserDetailsService userDetailsService;
 
+
     @org.springframework.beans.factory.annotation.Value("${front-end.url}")
     private String frontendUrl;
 
@@ -53,7 +54,16 @@ public class SecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**")
                         .permitAll()
-                        .requestMatchers("/api/auth/**", "/error").permitAll()
+                        .requestMatchers(
+                                "/api/auth/login",
+                                "/api/auth/register",
+                                "/api/auth/logout",
+                                "/api/auth/forgot-password",
+                                "/api/auth/reset-password",
+                                "/uploads/**",
+                                "/error")
+                        .permitAll()
+                        .requestMatchers("/api/auth/change-password").authenticated()
 
                         // 2. Các API GET công khai
                         .requestMatchers(HttpMethod.GET, "/api/brands/**", "/api/categories/**", "/api/products/**",
@@ -68,12 +78,16 @@ public class SecurityConfig {
                         // 4. Các API chỉ dành riêng cho ADMIN
                         .requestMatchers(HttpMethod.PUT, "/api/orders/*/status").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/orders/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/users/me").authenticated()
+                        .requestMatchers("/api/users/me").authenticated()
                         .requestMatchers("/api/brands/**", "/api/categories/**", "/api/products/**", "/api/users/**",
                                 "/api/roles/**")
                         .hasRole("ADMIN")
 
                         // 5. Mọi request khác đều phải được xác thực
+                        .requestMatchers("/api/files/**").authenticated()
                         .anyRequest().authenticated())
+                .exceptionHandling(e -> e.authenticationEntryPoint(new org.springframework.security.web.authentication.HttpStatusEntryPoint(org.springframework.http.HttpStatus.UNAUTHORIZED)))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
