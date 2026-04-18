@@ -1,6 +1,7 @@
 package com.ttcs.backend.controller;
 
 import com.ttcs.backend.entity.Review;
+import com.ttcs.backend.security.SecurityUtils;
 import com.ttcs.backend.service.ReviewService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -10,8 +11,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/reviews")
@@ -54,6 +58,26 @@ public class ReviewController {
     @ApiResponse(responseCode = "404", description = "Không tìm thấy đánh giá")
     public ResponseEntity<Review> getReviewById(@PathVariable Long id) {
         return ResponseEntity.ok(reviewService.getReviewById(id));
+    }
+
+    // 3.1. GET MY REVIEWS
+    @GetMapping("/me")
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Lấy đánh giá của tôi", description = "Trả về danh sách đánh giá của người dùng hiện tại")
+    @ApiResponse(responseCode = "200", description = "Thành công")
+    @ApiResponse(responseCode = "401", description = "Chưa xác thực")
+    public ResponseEntity<Page<Review>> getMyReviews(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir) {
+
+        Long userId = SecurityUtils.getCurrentUserId()
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Bạn chưa đăng nhập"));
+
+        Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return ResponseEntity.ok(reviewService.getFilteredReviews(null, userId, null, pageable));
     }
 
     // 4. PUT/PATCH UPDATE
