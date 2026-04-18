@@ -1,6 +1,8 @@
 package com.ttcs.backend.controller;
 
+import com.ttcs.backend.auth.dto.UserResponse;
 import com.ttcs.backend.entity.User;
+import com.ttcs.backend.security.SecurityUtils;
 import com.ttcs.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -10,8 +12,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/users")
@@ -76,5 +81,28 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/me")
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Lấy thông tin cá nhân", description = "Trả về thông tin chi tiết của người dùng đang đăng nhập")
+    @ApiResponse(responseCode = "200", description = "Thành công")
+    @ApiResponse(responseCode = "401", description = "Chưa xác thực")
+    public ResponseEntity<UserResponse> getCurrentUser() {
+        Long userId = SecurityUtils.getCurrentUserId()
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Bạn chưa đăng nhập"));
+        return ResponseEntity.ok(userService.getUserProfile(userId));
+    }
+
+    @PutMapping("/me")
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Cập nhật thông tin cá nhân", description = "Cập nhật thông tin của người dùng đang đăng nhập")
+    @ApiResponse(responseCode = "200", description = "Thành công")
+    @ApiResponse(responseCode = "400", description = "Lỗi dữ liệu đầu vào")
+    @ApiResponse(responseCode = "401", description = "Chưa xác thực")
+    public ResponseEntity<UserResponse> updateCurrentUser(@RequestBody User userDetails) {
+        Long userId = SecurityUtils.getCurrentUserId()
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Bạn chưa đăng nhập"));
+        return ResponseEntity.ok(userService.updateUserProfile(userId, userDetails));
     }
 }
