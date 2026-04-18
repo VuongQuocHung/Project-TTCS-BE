@@ -1,6 +1,7 @@
 package com.ttcs.backend.controller;
 
 import com.ttcs.backend.auth.dto.AuthResponse;
+import com.ttcs.backend.auth.dto.GoogleLoginRequest;
 import com.ttcs.backend.auth.dto.LoginRequest;
 import com.ttcs.backend.auth.dto.RegisterRequest;
 import com.ttcs.backend.service.AuthService;
@@ -38,5 +39,13 @@ public class AuthController {
     @ApiResponse(responseCode = "401", description = "Sai email hoặc mật khẩu")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @PostMapping("/google")
+    @Operation(summary = "Đăng nhập Google", description = "Xác thực Google ID token và trả JWT token nội bộ")
+    @ApiResponse(responseCode = "200", description = "Đăng nhập thành công")
+    @ApiResponse(responseCode = "401", description = "Google token không hợp lệ")
+    public ResponseEntity<AuthResponse> googleLogin(@Valid @RequestBody GoogleLoginRequest request) {
+        return ResponseEntity.ok(authService.loginWithGoogle(request));
     }
 }
