@@ -1,96 +1,97 @@
-# Laptop Store API (Backend)
+# 💻 Multi-branch Laptop Shop Backend (Spring Boot 3)
 
-Hệ thống Backend mạnh mẽ và có khả năng mở rộng cho ứng dụng Cửa hàng Laptop, được xây dựng bằng **Spring Boot 3**, **MySQL** và **Xác thực JWT**. Dự án này cung cấp đầy đủ các RESTful API để quản lý sản phẩm, danh mục, thương hiệu, đơn hàng và đánh giá của người dùng.
+Hệ thống Backend mạnh mẽ, bảo mật và có khả năng mở rộng cho chuỗi cửa hàng Laptop đa chi nhánh. Xây dựng theo tiêu chuẩn chuẩn chỉnh với kiến trúc phân lớp, bảo mật JWT và cơ chế quản lý kho đa điểm.
+
+---
+
+## 🚀 Tính năng nổi bật
+
+- **Quản lý Đa Chi nhánh**: Quản lý tồn kho (`Inventory`) và đơn hàng (`Order`) tách biệt theo từng chi nhánh (`Branch`).
+- **Phân quyền chặt chẽ (RBAC)**: 
+  - `GUEST`: Xem sản phẩm, tồn kho, đăng ký.
+  - `CUSTOMER`: Quản lý profile, đặt hàng (Bảo mật IDOR).
+  - `MANAGER`: Quản lý kho và đơn hàng của riêng chi nhánh mình.
+  - `ADMIN`: Quản trị toàn hệ thống, cấu hình giá, chạy tool ETL.
+- **ETL Data Import**: Hệ thống hỗ trợ import dữ liệu từ file JSON bên ngoài (`raw_laptops.json`) để đồng bộ hóa danh mục, sản phẩm và biến thể.
+- **Bảo mật JWT**: Xác thực Stateless dựa trên Token, tích hợp sẵn vào Swagger UI.
+- **Tài liệu API tự động**: Swagger UI được cấu hình tại đường dẫn `/docs`.
 
 ---
 
 ## 🛠️ Công nghệ sử dụng
 
--   **Framework**: Spring Boot 3.4.4
--   **Cơ sở dữ liệu**: MySQL
--   **Bảo mật**: Spring Security 6 + JJWT (JSON Web Token)
--   **Truy cập dữ liệu**: Spring Data JPA + Hibernate
--   **Xác thực dữ liệu**: Jakarta Bean Validation
--   **Tài liệu API**: SpringDoc OpenAPI (Swagger)
--   **Công cụ hỗ trợ**: Lombok
+- **Core**: Java 17+, Spring Boot 3.2.4
+- **Database**: MySQL 8.0, Spring Data JPA, Hibernate
+- **Security**: Spring Security 6, io.jsonwebtoken (JJWT)
+- **Mapping**: MapStruct (Entity <-> DTO)
+- **Validation**: Hibernate Validator
+- **Docs**: SpringDoc OpenAPI (Swagger UI)
+- **Utilities**: Lombok, Jackson (JSON processing)
 
 ---
 
-## 📋 Yêu cầu hệ thống
+## 📋 Yêu cầu & Cài đặt
 
-Để chạy dự án này, hãy đảm bảo bạn đã cài đặt:
--   **Java Development Kit (JDK) 17** trở lên.
--   **Maven** 3.x.
--   **MySQL Server** (Phiên bản 8.0 hoặc tương đương).
+### 1. Yêu cầu hệ thống
+- **JDK 17** hoặc cao hơn.
+- **Maven 3.8+**.
+- **MySQL 8.0+**.
 
----
+### 2. Cấu hình Cơ sở dữ liệu
+Hệ thống sẽ tự động tạo database nếu chưa có thông qua cấu hình `createDatabaseIfNotExist=true`.
+Tuy nhiên, bạn nên đảm bảo MySQL đang chạy với thông tin:
+- **User**: `root`
+- **Password**: `123456`
+- **Database Name**: `laptop_shop`
 
-## ⚙️ Cài đặt & Cấu hình
-
-### 1. Thiết lập Cơ sở dữ liệu
-1.  Mở terminal MySQL hoặc trình quản lý (ví dụ: MySQL Workbench).
-2.  Tạo một cơ sở dữ liệu mới có tên `laptop_store`:
-    ```sql
-    CREATE DATABASE laptop_store;
-    ```
-    *(Hệ thống Hibernate sẽ tự động tạo các bảng vì cấu hình `spring.jpa.hibernate.ddl-auto=update` đã được bật)*.
-
-### 2. Cấu hình ứng dụng
-Kiểm tra file `backend/src/main/resources/application.properties` để biết các thiết lập sau:
--   **Cổng (Port)**: `8080` (mặc định)
--   **Kết nối MySQL**: Cập nhật `spring.datasource.username` và `spring.datasource.password` để phù hợp với máy của bạn.
--   **JWT Secret**: Đối với môi trường phát triển, một khóa mặc định đã được cung cấp, nhưng nên thay đổi khi triển khai thực tế.
-
-### 3. Thông tin Admin mặc định
-Theo cấu hình mặc định, hệ thống có sẵn tài khoản quản trị:
--   **Email**: `admin@gmail.com`
--   **Mật khẩu**: `admin`
+### 3. Cấu hình ứng dụng
+Mọi cấu hình nằm tại `backend/src/main/resources/application.properties`.
+Lưu ý đường dẫn file Import:
+- `app.import.path=/home/ducva/Project-TTCS-BE/laptop_data/raw_laptops.json`
 
 ---
 
 ## 🏃 Hướng dẫn khởi chạy
 
-1.  Di chuyển vào thư mục `backend`:
-    ```bash
-    cd backend
-    ```
-2.  Khởi động server Spring Boot bằng Maven wrapper:
-    ```bash
-    # Đối với Windows:
-    .\mvnw.cmd spring-boot:run
-    
-    # Đối với MacOS/Linux:
-    ./mvnw spring-boot:run
-    ```
+Để khởi chạy dự án, bạn cần thực hiện lệnh Maven từ thư mục `backend`:
 
----
+```bash
+# Di chuyển vào thư mục backend
+cd backend
 
-## 📖 Tài liệu API (Swagger)
-
-Sau khi ứng dụng đã chạy, bạn có thể kiểm thử các API qua Swagger UI:
--   **Đường dẫn**: [http://localhost:8080/docs](http://localhost:8080/docs)
-
-### Quy trình xác thực (Cách dùng JWT):
-1.  **Đăng nhập**: Gửi request `POST` đến `/api/auth/login` với thông tin tài khoản.
-2.  **Nhận Token**: Bạn sẽ nhận được chuỗi `token` trong phản hồi JSON.
-3.  **Sử dụng**: Trong Swagger hoặc Postman, thêm header: `Authorization: Bearer <your_token>`.
-
----
-
-## 📂 Cấu trúc thư mục
-
-```text
-backend/
- ├── src/main/java/com/ttcs/backend
- │    ├── auth/          # Các DTO cho xác thực
- │    ├── config/        # Cấu hình ứng dụng/CORS
- │    ├── controller/    # Các đầu nối API (User, Product, Order, v.v.)
- │    ├── entity/        # Các thực thể JPA (Bảng cơ sở dữ liệu)
- │    ├── exception/     # Logic xử lý lỗi toàn cục
- │    ├── repository/    # Lớp truy xuất dữ liệu
- │    ├── security/      # Cấu hình bảo mật, xử lý JWT
- │    ├── service/       # Lớp xử lý nghiệp vụ
- │    └── specification/ # JPA Specification cho tìm kiếm nâng cao
- └── src/main/resources/
-      └── application.properties # File cấu hình chính
+# Chạy ứng dụng
+mvn spring-boot:run
 ```
+
+---
+
+## 📖 Tài liệu API (Swagger UI)
+
+Hệ thống cung cấp giao diện Swagger UI vô cùng tiện lợi tại:
+📍 **[http://localhost:8080/docs](http://localhost:8080/docs)**
+
+### Hướng dẫn Test API bảo mật:
+1. Sử dụng API `/api/v1/auth/login` để lấy `token`.
+2. Trên giao diện Swagger, nhấn nút **Authorize** (biểu tượng ổ khóa).
+3. Nhập token theo định dạng: `Bearer <your_token_here>`.
+4. Bây giờ bạn có thể gọi các API thuộc nhóm `/api/v1/me/**`, `/api/v1/manager/**` hoặc `/api/v1/admin/**`.
+
+---
+
+## 📂 Câu trúc thư mục (Backend)
+
+`backend/src/main/java/com/laptopshop/`
+- `config/`: Cấu hình Security, Swagger, Bean Mapping.
+- `controller/`: Các RestController chia theo nhóm Auth, Public, Me, Manager, Admin.
+- `dto/`: Request/Response DTOs.
+- `entity/`: JPA Entities (Category, Brand, Product, Order, User, v.v.).
+- `exception/`: Xử lý ngoại lệ toàn cục (Global Exception Handler).
+- `mapper/`: MapStruct interfaces.
+- `repository/`: Spring Data JPA Repositories.
+- `security/`: JWT logic, Auth Filter, UserPrincipal.
+- `service/`: Core Business Logic (Order, Inventory, ETL Service).
+
+---
+
+## 🧪 Dữ liệu mẫu (Laptop Data)
+Dữ liệu mẫu (`raw_laptops.json`) được đặt tại thư mục `laptop_data/` ở thư mục gốc của dự án. File này được thiết kế để khớp hoàn toàn với logic ETL của backend.
