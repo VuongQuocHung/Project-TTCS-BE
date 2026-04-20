@@ -48,6 +48,7 @@ public class ProductService {
         return suggestions.stream().distinct().limit(10).toList();
     }
 
+    @Transactional(readOnly = true)
     public PageResponseDTO<ProductDTO> getProducts(ProductFilterRequest request, int page, int size) {
         Sort sort = Sort.by(Sort.Direction.fromString(request.getSortDir() != null ? request.getSortDir() : "DESC"), 
                 request.getSortBy() != null ? request.getSortBy() : "id");
@@ -59,6 +60,7 @@ public class ProductService {
         return PageResponseDTO.of(productPage.map(productMapper::toDto));
     }
 
+    @Transactional(readOnly = true)
     public ProductDTO getProduct(Long id) {
         return productRepository.findById(id)
                 .map(productMapper::toDto)

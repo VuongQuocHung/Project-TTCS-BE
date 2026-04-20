@@ -1,6 +1,7 @@
 package com.laptopshop.dto;
 
 import lombok.*;
+import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -14,5 +15,6 @@ public class ProductVariantDTO {
     private Double price;
     private String color;
     private Map<String, Object> specsJson;
-    private Integer quantity; // Stock for a specific branch
+    private Integer quantity; // Total or branch-specific quantity
+    private List<InventoryDTO> inventories;
 }
