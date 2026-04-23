@@ -106,4 +106,35 @@ public class UserService {
         user.setResetTokenExpiry(null);
         userRepository.save(user);
     }
+
+    @Transactional
+    public void updateUserRole(Long userId, Role role) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setRole(role);
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public User getOrCreateUserFromGoogle(String email, String fullName) {
+        return userRepository.findByEmail(email)
+                .map(user -> {
+                    if (user.getProvider() == null) {
+                        user.setProvider("GOOGLE");
+                        userRepository.save(user);
+                    }
+                    return user;
+                })
+                .orElseGet(() -> {
+                    User newUser = User.builder()
+                            .username(email)
+                            .email(email)
+                            .fullName(fullName)
+                            .role(Role.CUSTOMER)
+                            .provider("GOOGLE")
+                            .enabled(true)
+                            .build();
+                    return userRepository.save(newUser);
+                });
+    }
 }

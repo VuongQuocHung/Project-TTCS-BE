@@ -1,8 +1,6 @@
 package com.laptopshop.config;
 
-import com.laptopshop.security.CustomOAuth2UserService;
 import com.laptopshop.security.JwtAuthenticationFilter;
-import com.laptopshop.security.OAuth2LoginSuccessHandler;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
@@ -35,18 +33,12 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final CustomOAuth2UserService customOAuth2UserService;
-    private final OAuth2LoginSuccessHandler oauth2LoginSuccessHandler;
 
     @Value("${app.cors.allowed-origins}")
     private String allowedOrigins;
 
-    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter,
-                          CustomOAuth2UserService customOAuth2UserService,
-                          OAuth2LoginSuccessHandler oauth2LoginSuccessHandler) {
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-        this.customOAuth2UserService = customOAuth2UserService;
-        this.oauth2LoginSuccessHandler = oauth2LoginSuccessHandler;
     }
 
     @Bean
@@ -74,11 +66,6 @@ public class SecurityConfig {
                                 .anyRequest().authenticated()
                 ).sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                ).oauth2Login(oauth2 -> oauth2
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(customOAuth2UserService)
-                        )
-                        .successHandler(oauth2LoginSuccessHandler)
                 );
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
