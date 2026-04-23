@@ -24,10 +24,28 @@ public class JwtTokenProvider {
     @Value("${app.jwt.expiration}")
     private long jwtExpirationDate;
 
+    @Value("${app.jwt.refreshExpiration}")
+    private long refreshExpirationDate;
+
     public String generateToken(Authentication authentication) {
-        String username = authentication.getName();
+        return generateToken(authentication.getName(), jwtExpirationDate);
+    }
+
+    public String generateToken(String username) {
+        return generateToken(username, jwtExpirationDate);
+    }
+
+    public String generateRefreshToken(Authentication authentication) {
+        return generateToken(authentication.getName(), refreshExpirationDate);
+    }
+
+    public String generateRefreshToken(String username) {
+        return generateToken(username, refreshExpirationDate);
+    }
+
+    public String generateToken(String username, long expiration) {
         Date currentDate = new Date();
-        Date expireDate = new Date(currentDate.getTime() + jwtExpirationDate);
+        Date expireDate = new Date(currentDate.getTime() + expiration);
 
         return Jwts.builder()
                 .subject(username)
