@@ -1,0 +1,965 @@
+[
+  {
+    "name": "Laptop Dell Pro 15 Essential PV15255 NKFV | Ryzen 5 7520U, 8GB, 512GB, 15.6 inch FHD IPS 120Hz, Ubuntu",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-dell-pro-15-essential-pv15255-nkfv-ryzen-5-7520u-8gb-512gb-15.6-inch-fhd-ips-120hz-ubuntu",
+        "price": 12890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "8GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4559_z7581875315202_a1965b11dafe4967dd485ce99f7996cb.jpg",
+          "https://laptopaz.vn/media/product/4559_z7581875256700_bbd18940206a038bba0318d4bbd6ab46.jpg",
+          "https://laptopaz.vn/media/product/4559_z7581875256699_c37c065fe38f45feb793c71829deedee.jpg",
+          "https://laptopaz.vn/media/product/4559_z7581875192619_87e410f3226195230e2ec2d3d50b8967.jpg",
+          "https://laptopaz.vn/media/product/4559_z7581875192618_f762037dba5dacf46fe0b2134fc9316a.jpg",
+          "https://laptopaz.vn/media/product/4559_z7581875192496_dd3a086084995be50e9a1ac5879f91d1.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "[New Outlet] Lenovo Thinkpad X1 Carbon Gen 13 Aura Edition 21NSCTO1WW |  Ultra 7-258V, 32GB, 1TB, 14 Inch 2.8K OLED 120Hz",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "new-outlet-lenovo-thinkpad-x1-carbon-gen-13-aura-edition-21nscto1ww-ultra-7-258v-32gb-1tb-14-inch-2.8k-oled-120hz",
+        "price": 48990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ultra 7-258V",
+          "ram": "32GB",
+          "storage": "1TB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Lenovo IdeaPad Slim 3 16IRH10 83K20001VN | Intel Core i7-13620H, 16GB, 512GB, Intel UHD, 16 inch WUXGA IPS",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-ideapad-slim-3-16irh10-83k20001vn-intel-core-i7-13620h-16gb-512gb-intel-uhd-16-inch-wuxga-ips-60hz",
+        "price": 20990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i7-13620",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__3.jpg",
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__4.jpg",
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__5.jpg",
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__6.jpg",
+          "https://laptopaz.vn/media/product/4377_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dell DC15255 NKFV | Ryzen 5 7530U, 8GB, 1TB, Radeon Graphics, 15.6 inch FHD, Cảm ứng, Carbon Black",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "dell-dc15255-nkfv-ryzen-5-7530u-8gb-1tb-radeon-graphics-15.6-inch-fhd-cam-ung-carbon-black",
+        "price": 13490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "8GB",
+          "storage": "1TB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4318_z7410520072054_505d36951e985de86e01f88dfe000949.jpg",
+          "https://laptopaz.vn/media/product/4318_z7410520072052_adc30fb727723db0daae8f4baf09887a.jpg",
+          "https://laptopaz.vn/media/product/4318_z7410519964200_d28ba160b4ff613678ff1a75c4f6696d.jpg",
+          "https://laptopaz.vn/media/product/4318_z7410519964198_abf3908c839f159f360c31d5f5b50855.jpg",
+          "https://laptopaz.vn/media/product/4318_z7410519964146_ef9efa0d57b53975edc021cc9ba15c91.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Lenovo ThinkPad X13 Gen 5 21LVS62000 | Ultra 5 125U, 16GB, 512GB, Intel Graphics, 13.3 inch WUXGA, Win 11 Pro",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-lenovo-thinkpad-x13-gen-5-21lvs62000-ultra-5-125u-16gb-512gb-intel-graphics-13.3-inch-wuxga-win-11-pro",
+        "price": 23790000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ultra 5",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4312_27996_laptop_lenovo_thinkpad_x13_gen_5_21lvs62000_9.jpg",
+          "https://laptopaz.vn/media/product/4312_27996_laptop_lenovo_thinkpad_x13_gen_5_21lvs62000_8.jpg",
+          "https://laptopaz.vn/media/product/4312_27996_laptop_lenovo_thinkpad_x13_gen_5_21lvs62000_7.jpg",
+          "https://laptopaz.vn/media/product/4312_27996_laptop_lenovo_thinkpad_x13_gen_5_21lvs62000_6.jpg",
+          "https://laptopaz.vn/media/product/4312_27996_laptop_lenovo_thinkpad_x13_gen_5_21lvs62000_5.jpg",
+          "https://laptopaz.vn/media/product/4312_27996_laptop_lenovo_thinkpad_x13_gen_5_21lvs62000_4.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Gaming Nitro V 15 ProPanel ANV15-52-59RR NH.QZ9SV.005 | Core 5 210H, 16GB, 512GB, RTX 5050 8GB, 15.6 inch FHD IPS 180Hz 100% sRGB",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-gaming-nitro-v-15-propanel-anv15-52-59rr-nh.qz9sv.005-core-5-210h-16gb-512gb-rtx-5050-8gb-15.6-inch-fhd-ips-180hz-100-srgb",
+        "price": 30490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4287_30499_laptop_acer_gaming_nitro_v_15_propanel_anv15_52_74um_nh_qubsv_003_7.jpg",
+          "https://laptopaz.vn/media/product/4287_30499_laptop_acer_gaming_nitro_v_15_propanel_anv15_52_74um_nh_qubsv_003_6.jpg",
+          "https://laptopaz.vn/media/product/4287_30499_laptop_acer_gaming_nitro_v_15_propanel_anv15_52_74um_nh_qubsv_003_4.jpg",
+          "https://laptopaz.vn/media/product/4287_30499_laptop_acer_gaming_nitro_v_15_propanel_anv15_52_74um_nh_qubsv_003_3.jpg",
+          "https://laptopaz.vn/media/product/4287_30499_laptop_acer_gaming_nitro_v_15_propanel_anv15_52_74um_nh_qubsv_003_2.jpg",
+          "https://laptopaz.vn/media/product/4287_30499_laptop_acer_gaming_nitro_v_15_propanel_anv15_52_74um_nh_qubsv_003_1.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop ASUS Vivobook S14 S3407CA-LY096WS | Ultra 7 255H, 16GB, 512GB, Intel Graphics, 14inch WUXGA, OfficeHS24",
+    "brand": "Asus",
+    "category": "Laptop",
+    "description": "Dòng laptop Asus mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-asus-vivobook-s14-s3407ca-ly096ws-ultra-7-255h-16gb-512gb-intel-graphics-14inch-wuxga-officehs24",
+        "price": 27890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ultra 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4276_28546_laptop_asus_vivobook_s14_s3407ca_ly096ws_3.jpg",
+          "https://laptopaz.vn/media/product/4276_28546_laptop_asus_vivobook_s14_s3407ca_ly096ws_2.jpg",
+          "https://laptopaz.vn/media/product/4276_28546_laptop_asus_vivobook_s14_s3407ca_ly096ws_1.jpg",
+          "https://laptopaz.vn/media/product/4276_28546_laptop_asus_vivobook_s14_s3407ca_ly096ws.jpg",
+          "https://laptopaz.vn/media/product/4276_28546_laptop_asus_vivobook_s14_s3407ca_ly096ws_6.jpg",
+          "https://laptopaz.vn/media/product/4276_28546_laptop_asus_vivobook_s14_s3407ca_ly096ws_5.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Gaming Nitro V 15 ProPanel ANV15-41-R0Y4 NH.QPESV.004 | Ryzen 7-7735HS, 16GB, 512GB, RTX 4050 6GB, 15.6 inch FHD IPS 180Hz 100% sRGB",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-gaming-nitro-v-15-propanel-anv15-41-r0y4-nh.qpesv.004-ryzen-7-7735hs-16gb-512gb-rtx-4050-6gb-15.6-inch-fhd-ips-180hz-100-srgb",
+        "price": 29990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4258_29630_laptop_acer_gaming_nitro_v_15_propanel_anv15_41_r0y4_nh_qpesv_004__9_.jpg",
+          "https://laptopaz.vn/media/product/4258_29630_laptop_acer_gaming_nitro_v_15_propanel_anv15_41_r0y4_nh_qpesv_004__8_.jpg",
+          "https://laptopaz.vn/media/product/4258_29630_laptop_acer_gaming_nitro_v_15_propanel_anv15_41_r0y4_nh_qpesv_004__6_.jpg",
+          "https://laptopaz.vn/media/product/4258_29630_laptop_acer_gaming_nitro_v_15_propanel_anv15_41_r0y4_nh_qpesv_004__5_.jpg",
+          "https://laptopaz.vn/media/product/4258_29630_laptop_acer_gaming_nitro_v_15_propanel_anv15_41_r0y4_nh_qpesv_004__4_.jpg",
+          "https://laptopaz.vn/media/product/4258_29630_laptop_acer_gaming_nitro_v_15_propanel_anv15_41_r0y4_nh_qpesv_004__3_.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Nitro V ANV15-41-R1JY NH.QPFSV.001 | Ryzen 5 6600H, 16GB, 512GB, RTX 3050 6GB, 15.6 inch FHD IPS 165Hz",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-nitro-v-anv15-41-r1jy-nh.qpfsv.001-ryzen-5-6600h-16gb-512gb-rtx-3050-6gb-15.6-inch-fhd-ips-165hz",
+        "price": 22790000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4257_26875_laptop_gaming_acer_nitro_v_anv15_41_r1jy_nh_qpfsv_001__15_.jpg",
+          "https://laptopaz.vn/media/product/4257_26875_laptop_gaming_acer_nitro_v_anv15_41_r1jy_nh_qpfsv_001__14_.jpg",
+          "https://laptopaz.vn/media/product/4257_26875_laptop_gaming_acer_nitro_v_anv15_41_r1jy_nh_qpfsv_001__13_.jpg",
+          "https://laptopaz.vn/media/product/4257_26875_laptop_gaming_acer_nitro_v_anv15_41_r1jy_nh_qpfsv_001__12_.jpg",
+          "https://laptopaz.vn/media/product/4257_26875_laptop_gaming_acer_nitro_v_anv15_41_r1jy_nh_qpfsv_001__11_.jpg",
+          "https://laptopaz.vn/media/product/4257_26875_laptop_gaming_acer_nitro_v_anv15_41_r1jy_nh_qpfsv_001__5_.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dell DC15250 NKFV | Core i5-1334U, 8GB, 512GB, Intel UHD Graphics, 15.6 icnh FHD, Cảm ứng",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "dell-dc15250-nkfv-core-i5-1334u-8gb-512gb-intel-uhd-graphics-15.6-icnh-fhd-120hz-touch-carbon-black",
+        "price": 14290000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i5-1334",
+          "ram": "8GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4255_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__6_.png",
+          "https://laptopaz.vn/media/product/4255_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__5_.png",
+          "https://laptopaz.vn/media/product/4255_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__4_.png",
+          "https://laptopaz.vn/media/product/4255_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__3_.png",
+          "https://laptopaz.vn/media/product/4255_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__2_.png",
+          "https://laptopaz.vn/media/product/4255_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lenovo Xiaoxin Pro 14c AHP10R 2025 NKFV | Ryzen 7 H 255, 24GB, 1TB, 14.0'' 2.8K OLED 120Hz",
+    "brand": "HP",
+    "category": "Laptop",
+    "description": "Dòng laptop HP mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-xiaoxin-pro-14c-ahp10r-2025-nkfv-ryzen-7-h-255-24gb-1tb-14.0-2.8k-oled-120hz",
+        "price": 22390000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "24GB",
+          "storage": "1TB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4206_3846_new_100_lenovo_xiaoxin_pro_14c_ahp10r_2025_ryzen_7_h_255_24gb_1tb_14_0quot_2_8k_oled_120hz_laptopaz__6_.png",
+          "https://laptopaz.vn/media/product/4206_3846_new_100_lenovo_xiaoxin_pro_14c_ahp10r_2025_ryzen_7_h_255_24gb_1tb_14_0quot_2_8k_oled_120hz_laptopaz__5_.png",
+          "https://laptopaz.vn/media/product/4206_3846_new_100_lenovo_xiaoxin_pro_14c_ahp10r_2025_ryzen_7_h_255_24gb_1tb_14_0quot_2_8k_oled_120hz_laptopaz__4_.png",
+          "https://laptopaz.vn/media/product/4206_3846_new_100_lenovo_xiaoxin_pro_14c_ahp10r_2025_ryzen_7_h_255_24gb_1tb_14_0quot_2_8k_oled_120hz_laptopaz__3_.png",
+          "https://laptopaz.vn/media/product/4206_3846_new_100_lenovo_xiaoxin_pro_14c_ahp10r_2025_ryzen_7_h_255_24gb_1tb_14_0quot_2_8k_oled_120hz_laptopaz__2_.png",
+          "https://laptopaz.vn/media/product/4206_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lenovo Thinkbook 14 G7+ AHP 21U40001CD NKFV | Ryzen 7 H 255, 24GB, 512GB, 14.5 icnh 2K+ 90Hz",
+    "brand": "HP",
+    "category": "Laptop",
+    "description": "Dòng laptop HP mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-thinkbook-14-g7-01cd-2025-nkfv-ryzen-7-h-255-24gb-512gb-14.5-icnh-2k-90hz",
+        "price": 22490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "24GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4204_3671_3616_thinkbook_14_g7__akp_1.png",
+          "https://laptopaz.vn/media/product/4204_3670_3616_thinkbook_14_g7__akp_4.png",
+          "https://laptopaz.vn/media/product/4204_3670_3616_thinkbook_14_g7__akp_3.png",
+          "https://laptopaz.vn/media/product/4204_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MSI Katana 15 HX B14WEK- 286VN | Core i5 14450HX, 16GB, 512GB, RTX 5050 8GB, 15.6 icnh QHD 165Hz 100% DCI-P3",
+    "brand": "MSI",
+    "category": "Laptop",
+    "description": "Dòng laptop MSI mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "msi-katana-15-hx-b14wek-286vn-core-i5-14450hx-16gb-512gb-rtx-5050-8gb-15.6-icnh-qhd-165hz-100-dci-p3",
+        "price": 32490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4201_28688_laptop_msi_katana_15_hx_b14wfk_025vn__8_.jpg",
+          "https://laptopaz.vn/media/product/4201_28688_laptop_msi_katana_15_hx_b14wfk_025vn__7_.jpg",
+          "https://laptopaz.vn/media/product/4201_28688_laptop_msi_katana_15_hx_b14wfk_025vn__6_.jpg",
+          "https://laptopaz.vn/media/product/4201_28688_laptop_msi_katana_15_hx_b14wfk_025vn__5_.jpg",
+          "https://laptopaz.vn/media/product/4201_28688_laptop_msi_katana_15_hx_b14wfk_025vn__4_.jpg",
+          "https://laptopaz.vn/media/product/4201_28688_laptop_msi_katana_15_hx_b14wfk_025vn__3_.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dell DC15250 NKFV | Core i5-1334U, 8GB, 512GB, Intel UHD Graphics, 15.6 icnh FHD 120Hz, Ubuntu Black",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "dell-dc15250-nkfv-core-i5-1334u-8gb-512gb-intel-uhd-graphics-15.6-icnh-fhd-120hz-ubuntu-black",
+        "price": 14490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i5-1334",
+          "ram": "8GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4193_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__6_.png",
+          "https://laptopaz.vn/media/product/4193_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__5_.png",
+          "https://laptopaz.vn/media/product/4193_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__4_.png",
+          "https://laptopaz.vn/media/product/4193_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__3_.png",
+          "https://laptopaz.vn/media/product/4193_4069_dell_dc15250_core_i5_1334u_8gb_512gb_intel_uhd_graphics_15_6_icnh_fhd_120hz_carbon_black_laptopaz__2_.png",
+          "https://laptopaz.vn/media/product/4193_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Asus TUF Gaming F16 FX607VJB-RL151W | Core 5 210H, 16GB, 512GB, RTX 3050 6GB, 16 inch FHD+ 144Hz",
+    "brand": "Asus",
+    "category": "Laptop",
+    "description": "Dòng laptop Asus mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "asus-tuf-gaming-f16-fx607vjb-rl151w-core-5-210h-16gb-512gb-rtx-3050-6gb-16-inch-fhd-144hz",
+        "price": 24490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4184_30182_laptop_asus_tuf_gaming_f16_fx607vjb_rl151w_6.jpg",
+          "https://laptopaz.vn/media/product/4184_30182_laptop_asus_tuf_gaming_f16_fx607vjb_rl151w_5.jpg",
+          "https://laptopaz.vn/media/product/4184_30182_laptop_asus_tuf_gaming_f16_fx607vjb_rl151w_4.jpg",
+          "https://laptopaz.vn/media/product/4184_30182_laptop_asus_tuf_gaming_f16_fx607vjb_rl151w_2.jpg",
+          "https://laptopaz.vn/media/product/4184_30182_laptop_asus_tuf_gaming_f16_fx607vjb_rl151w_1.jpg",
+          "https://laptopaz.vn/media/product/4184_30182_laptop_asus_tuf_gaming_f16_fx607vjb_rl151w_9.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lenovo IdeaPad Slim 3 14 AHP10 83K90003CD 2025 NKFV | Xiaoxin 14c | Ryzen 7-8745HS, 16GB, 512GB, AMD 780M, 14 Inch FHD+",
+    "brand": "HP",
+    "category": "Laptop",
+    "description": "Dòng laptop HP mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-ideapad-slim-3-14-ahp10-83k90003cd2025-nkfv-xiaoxin-14c-ryzen-7-8745hs-16gb-512gb-amd-780m-14-inch-fhd",
+        "price": 19890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4162_3598_lenovo_xiaoxin_14c_ahp10_6.jpg",
+          "https://laptopaz.vn/media/product/4162_3598_lenovo_xiaoxin_14c_ahp10_5.jpg",
+          "https://laptopaz.vn/media/product/4162_3598_lenovo_xiaoxin_14c_ahp10_4.jpg",
+          "https://laptopaz.vn/media/product/4162_3598_lenovo_xiaoxin_14c_ahp10_3.jpg",
+          "https://laptopaz.vn/media/product/4162_3598_lenovo_xiaoxin_14c_ahp10_2.jpg",
+          "https://laptopaz.vn/media/product/4162_3598_lenovo_xiaoxin_14c_ahp10_1.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dell Inspiron 14 Plus 7440F NKFV | Intel Core 5 - 210H, 16GB, 512GB, Intel Iris Xe Graphics, 14 Inch FHD",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "dell-inspiron-14-plus-7440f-nkfv-intel-core-5-210h-16gb-512gb-intel-iris-xe-graphics-14-inch-fhd",
+        "price": 18290000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4132_4071_3649_3166_laptop_dell_inspiron_14_7440_plus_laptopaz_vn_4.jpg",
+          "https://laptopaz.vn/media/product/4132_4071_3649_3166_laptop_dell_inspiron_14_7440_plus_laptopaz_vn_3.jpg",
+          "https://laptopaz.vn/media/product/4132_4071_3649_3166_laptop_dell_inspiron_14_7440_plus_laptopaz_vn_2.jpg",
+          "https://laptopaz.vn/media/product/4132_4071_3649_3166_laptop_dell_inspiron_14_7440_plus_laptopaz_vn_1.jpg",
+          "https://laptopaz.vn/media/product/4132_4071_3649_3166_9194_dell_inspiron_14_plus_7440_keyboard.jpg",
+          "https://laptopaz.vn/media/product/4132_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Nitro V ANV15-41-R732 NH.QPESV.005 | Ryzen 5 6600H, 16GB, 512GB, RTX 4050 6GB, 15.6 inch FHD IPS 165Hz",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-nitro-v-anv15-41-r732-nh.qpesv.005-ryzen-5-6600h-16gb-512gb-rtx-4050-6gb-15.6-inch-fhd-ips-165hz",
+        "price": 27090000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4083_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__6_.png",
+          "https://laptopaz.vn/media/product/4083_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__5_.png",
+          "https://laptopaz.vn/media/product/4083_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__4_.png",
+          "https://laptopaz.vn/media/product/4083_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__3_.png",
+          "https://laptopaz.vn/media/product/4083_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__2_.png",
+          "https://laptopaz.vn/media/product/4083_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Gaming Nitro V 15 ProPanel ANV15-41-R9M1 NH.QPFSV.00 | Ryzen 5-7535HS, 16GB, 512GB, RTX 3050 6GB, 15.6'' FHD IPS 180Hz 100% sRGB",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-gaming-nitro-v-15-propanel-anv15-41-r9m1-nh.qpfsv.00-ryzen-5-7535hs-16gb-512gb-rtx-3050-6gb-15.6-fhd-ips-180hz-100-srgb",
+        "price": 23890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "M1",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4078_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__5_.png",
+          "https://laptopaz.vn/media/product/4078_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__4_.png",
+          "https://laptopaz.vn/media/product/4078_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__3_.png",
+          "https://laptopaz.vn/media/product/4078_3545_new_100_acer_nitro_v_15_propanel_anv15_41_r7ap_ryzen_5_7535hs_16gb_512gb_rtx_2050_4gb_15_6quot_fhd_ips_180hz_laptopaz__2_.png",
+          "https://laptopaz.vn/media/product/4078_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Asus Vivobook 14 X1404VA-I512256| Core i5-1334U, 12GB, 256GB, Intel UHD Graphics, 14 icnh FHD",
+    "brand": "Asus",
+    "category": "Laptop",
+    "description": "Dòng laptop Asus mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "asus-vivobook-14-x1404va-i512256-core-i5-1334u-12gb-256gb-intel-uhd-graphics-14-icnh-fhd",
+        "price": 12890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "I512256",
+          "ram": "12GB",
+          "storage": "256GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4063_asus_vivobook_14_x1404va_i512256_core_i5_1334u_12gb_256gb_intel_uhd_graphics_14_icnh_fhd_laptopaz__4_.png",
+          "https://laptopaz.vn/media/product/4063_asus_vivobook_14_x1404va_i512256_core_i5_1334u_12gb_256gb_intel_uhd_graphics_14_icnh_fhd_laptopaz__3_.png",
+          "https://laptopaz.vn/media/product/4063_asus_vivobook_14_x1404va_i512256_core_i5_1334u_12gb_256gb_intel_uhd_graphics_14_icnh_fhd_laptopaz__2_.png",
+          "https://laptopaz.vn/media/product/4063_asus_vivobook_14_x1404va_i512256_core_i5_1334u_12gb_256gb_intel_uhd_graphics_14_icnh_fhd_laptopaz__1_.png"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dell Pro 14 PC14250 | Core 5 120U, 8GB, 512GB, Intel Graphics, 14 icnh FHD+",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "dell-pro-14-pc14250-core-5-120u-8gb-512gb-intel-graphics-14-icnh-fhd",
+        "price": 14990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "8GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/3987_dell_pro_14_pc14250_core_5_120u_8gb_256gb_intel_graphics_14_icnh_fhd_laptopaz__9_.png",
+          "https://laptopaz.vn/media/product/3987_dell_pro_14_pc14250_core_5_120u_8gb_256gb_intel_graphics_14_icnh_fhd_laptopaz__8_.png",
+          "https://laptopaz.vn/media/product/3987_dell_pro_14_pc14250_core_5_120u_8gb_256gb_intel_graphics_14_icnh_fhd_laptopaz__7_.png",
+          "https://laptopaz.vn/media/product/3987_dell_pro_14_pc14250_core_5_120u_8gb_256gb_intel_graphics_14_icnh_fhd_laptopaz__6_.png",
+          "https://laptopaz.vn/media/product/3987_dell_pro_14_pc14250_core_5_120u_8gb_256gb_intel_graphics_14_icnh_fhd_laptopaz__5_.png",
+          "https://laptopaz.vn/media/product/3987_dell_pro_14_pc14250_core_5_120u_8gb_256gb_intel_graphics_14_icnh_fhd_laptopaz__4_.png"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Acer Nitro V 15 ProPanel ANV15-52-72BM | Core i7-13620H, 16GB, 512GB, RTX 5050 8GB, 15.6'' FHD IPS 180Hz",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "acer-nitro-v-15-propanel-anv15-52-72bm-core-i7-13620h-16gb-512gb-rtx-5050-8gb-15.6-fhd-ips-180hz",
+        "price": 31890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i7-13620",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/3894_laptopaz_acer_nitro_v_15_propanel_anv15_52_59aa_core_i5_13420h_16gb_512gb_rtx_5050_8gb_15_6_fhd_ips_180hz__2_.png",
+          "https://laptopaz.vn/media/product/3894_laptopaz_acer_nitro_v_15_propanel_anv15_52_59aa_core_i5_13420h_16gb_512gb_rtx_5050_8gb_15_6_fhd_ips_180hz__3_.png",
+          "https://laptopaz.vn/media/product/3894_laptopaz_acer_nitro_v_15_propanel_anv15_52_59aa_core_i5_13420h_16gb_512gb_rtx_5050_8gb_15_6_fhd_ips_180hz__4_.png",
+          "https://laptopaz.vn/media/product/3922_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Acer Nitro Lite 16 NL16-71G-56WQ NH.D59SV.001 | Core i5-13420H, 16GB, 512GB, RTX 3050 6GB, 16'' FHD IPS 165Hz",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "new-100-acer-nitro-lite-nl16-71g-56wq-core-i5-13420h-16gb-512gb-rtx-3050-6gb-16quot-fhd-ips-165hz",
+        "price": 25290000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i5-13420",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/3734_acer_gaming_nitro_lite_16_nl16_71g_anh_san_pham_9.png",
+          "https://laptopaz.vn/media/product/3734_acer_gaming_nitro_lite_16_nl16_71g_anh_san_pham_8.png",
+          "https://laptopaz.vn/media/product/3734_acer_gaming_nitro_lite_16_nl16_71g_anh_san_pham_6.png",
+          "https://laptopaz.vn/media/product/3734_acer_gaming_nitro_lite_16_nl16_71g_anh_san_pham_5.png",
+          "https://laptopaz.vn/media/product/3734_acer_gaming_nitro_lite_16_nl16_71g_anh_san_pham_4.png",
+          "https://laptopaz.vn/media/product/3734_acer_gaming_nitro_lite_16_nl16_71g_anh_san_pham_3.png"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dell Inspiron 14 5445 R1808L NKFV | Ryzen 7 8840HS, 16GB, 512GB, AMD Radeon 780M Graphics, 14 inch 2K+",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "new-100-dell-inspiron-14-5445-2024-ryzen-7-8840hs-16gb-512gb-14quot-2k",
+        "price": 18490000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/3289_dell_inspiron_14_5445_20246_1715338902.jpg",
+          "https://laptopaz.vn/media/product/3289_dell_inspiron_14_5445_20245_1715338902.jpg",
+          "https://laptopaz.vn/media/product/3289_dell_inspiron_14_5445_20244_1715338902.jpg",
+          "https://laptopaz.vn/media/product/3289_dell_inspiron_14_5445_20242_1715338902.jpg",
+          "https://laptopaz.vn/media/product/3289_dell_inspiron_14_5445_2024_1715338903.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lenovo IdeaPad Slim 3 16ARP10 83K80016VN | Ryzen 5-7533HS, 16GB, 512GB, AMD Radeon 660M, 16inch WUXGA",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-ideapad-slim-3-16arp10-83k80016vn-ryzen-5-7533hs-16gb-512gb-amd-radeon-660m-16inch-wuxga",
+        "price": 19290000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4591_29982_laptop_lenovo_ideapad_slim_3_16arp10_83k80016vn_6.jpg",
+          "https://laptopaz.vn/media/product/4591_29982_laptop_lenovo_ideapad_slim_3_16arp10_83k80016vn_5.jpg",
+          "https://laptopaz.vn/media/product/4591_29982_laptop_lenovo_ideapad_slim_3_16arp10_83k80016vn_4.jpg",
+          "https://laptopaz.vn/media/product/4591_29982_laptop_lenovo_ideapad_slim_3_16arp10_83k80016vn_3.jpg",
+          "https://laptopaz.vn/media/product/4591_29982_laptop_lenovo_ideapad_slim_3_16arp10_83k80016vn_2.jpg",
+          "https://laptopaz.vn/media/product/4591_29982_laptop_lenovo_ideapad_slim_3_16arp10_83k80016vn_1.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lenovo LOQ 15IRX10 83JE01AGVN | Core i7-13645HX, 16GB, 512GB, RTX 5050 8GB, 15.6 inch FHD 144Hz",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-loq-15irx10-83je01agvn-core-i7-13645hx-16gb-512gb-rtx-5050-8gb-15.6-inch-fhd-144hz",
+        "price": 35790000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i7-13645",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop ASUS Zenbook 14 UX3405CA-ST629W | Ultra 7 255H, 32GB, 512GB, Intel Arc Graphics, 14.0inch 3K OLED, Win 11",
+    "brand": "Asus",
+    "category": "Laptop",
+    "description": "Dòng laptop Asus mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-asus-zenbook-14-ux3405ca-st629w-ultra-7-255h-32gb-512gb-intel-arc-graphics-14.0inch-3k-oled-win-11",
+        "price": 35790000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ultra 7",
+          "ram": "32GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop HP VICTUS 15-fb3116AX BX8U4PA | Ryzen 7 7445H, 16GB, 512GB, RTX 3050, 15.6 inch FHD 144Hz Win 11",
+    "brand": "HP",
+    "category": "Laptop",
+    "description": "Dòng laptop HP mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-hp-victus-15-fb3116ax-bx8u4pa-amd-ryzen-7-7445h-16gb-512gb-rtx-3050-15.6-inch-fhd-144hz-win-11",
+        "price": 25990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4560_z7223802608285_34374f91d28c0ada9a71085e7cdc3216.jpg",
+          "https://laptopaz.vn/media/product/4560_z7223802568413_066bf569b21709e8dcf38dd3ad533fd4.jpg",
+          "https://laptopaz.vn/media/product/4560_z7223802488960_8aef12c97c028302ce22175916c752b5.jpg",
+          "https://laptopaz.vn/media/product/4560_z7223802439699_682452bc716deb230f29d1c9e5429b1a.jpg",
+          "https://laptopaz.vn/media/product/4560_"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Gaming Nitro V 15 ProPanel ANV15-52-50VA NH.QUBSV.002 | Core 5 210H, 16GB, 512GB, RTX 3050 6GB, 15.6 inch FHD 180Hz, Win 11",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-gaming-nitro-v-15-propanel-anv15-52-50va-nh.qubsv.002-core-5-210h-16gb-512gb-rtx-3050-6gb-15.6-inch-fhd-180hz-win-11",
+        "price": 27990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop Dell 15 DC15255 DC5R5802W1 | Ryzen 5-7530U,16GB, 512GB, AMD Radeon Graphics, 15.6 inch FHD, Win 11, Office",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-dell-15-dc15255-dc5r5802w1-ryzen-5-7530u16gb-512gb-amd-radeon-graphics-15.6-inch-fhd-win-11-office",
+        "price": 18990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4518_30204_laptop_dell_15_dc15255_dc5r5802w1_silver__8_.jpg",
+          "https://laptopaz.vn/media/product/4518_30204_laptop_dell_15_dc15255_dc5r5802w1_silver__7_.jpg",
+          "https://laptopaz.vn/media/product/4518_30204_laptop_dell_15_dc15255_dc5r5802w1_silver__6_.jpg",
+          "https://laptopaz.vn/media/product/4518_30204_laptop_dell_15_dc15255_dc5r5802w1_silver__5_.jpg",
+          "https://laptopaz.vn/media/product/4518_30204_laptop_dell_15_dc15255_dc5r5802w1_silver__4_.jpg",
+          "https://laptopaz.vn/media/product/4518_30204_laptop_dell_15_dc15255_dc5r5802w1_silver__3_.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop MSI Katana 15 B13UDXK-2412VN | Core i5-13420H, 8GB, 1TB, RTX 3050 6GB, 15.6inch FHD 144Hz, Win 11",
+    "brand": "MSI",
+    "category": "Laptop",
+    "description": "Dòng laptop MSI mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-msi-katana-15-b13udxk-2412vn-core-i5-13420h-8gb-1tb-rtx-3050-6gb-15.6inch-fhd-144hz-win-11",
+        "price": 20990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i5-13420",
+          "ram": "8GB",
+          "storage": "1TB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop Dell Pro 15 Essential PV15250 NKFV | Core 3 100U, 8GB, 512GB, 15.6 inch 120Hz FHD, Ubuntu",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-dell-pro-essential-pv-15250-nkfv-core-3-100u-ssd-512gb-15.6-inch-120hz-fhd-no-os",
+        "price": 12690000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "N/A",
+          "ram": "8GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4501_z7581875315202_a1965b11dafe4967dd485ce99f7996cb.jpg",
+          "https://laptopaz.vn/media/product/4501_z7581875256700_bbd18940206a038bba0318d4bbd6ab46.jpg",
+          "https://laptopaz.vn/media/product/4501_z7581875256699_c37c065fe38f45feb793c71829deedee.jpg",
+          "https://laptopaz.vn/media/product/4501_z7581875192619_87e410f3226195230e2ec2d3d50b8967.jpg",
+          "https://laptopaz.vn/media/product/4501_z7581875192618_f762037dba5dacf46fe0b2134fc9316a.jpg",
+          "https://laptopaz.vn/media/product/4501_z7581875192496_dd3a086084995be50e9a1ac5879f91d1.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lenovo Thinkbook 16 G7 ARP 21MW009QSA NKFV | AMD Ryzen 7 7735HS, 16GB, 512GB, AMD Radeon 680M, 16.0 inch WUXGA, None OS, Arctic Grey",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-thinkbook-16-g7-arp-21mw009qsa-amd-ryzen-7-7735hs-16gb-512gb-amd-radeon-680m-16.0-inch-wuxga-none-os-arctic-grey",
+        "price": 18990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4498_26868_laptop_lenovo_thinkbook_16_g7_iml_21ms007gvn_7.jpg",
+          "https://laptopaz.vn/media/product/4498_26868_laptop_lenovo_thinkbook_16_g7_iml_21ms007gvn_6.jpg",
+          "https://laptopaz.vn/media/product/4498_26868_laptop_lenovo_thinkbook_16_g7_iml_21ms007gvn_5.jpg",
+          "https://laptopaz.vn/media/product/4498_26868_laptop_lenovo_thinkbook_16_g7_iml_21ms007gvn_4.jpg",
+          "https://laptopaz.vn/media/product/4498_26868_laptop_lenovo_thinkbook_16_g7_iml_21ms007gvn_3.jpg",
+          "https://laptopaz.vn/media/product/4498_26868_laptop_lenovo_thinkbook_16_g7_iml_21ms007gvn_2.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Dell 14 DC14255 R7165W11SLU | AMD Ryzen 7 250, 16GB, 512GB, AMD Radeon, 14 inch FHD+ Office",
+    "brand": "Dell",
+    "category": "Laptop",
+    "description": "Dòng laptop Dell mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-dell-14-dc14255-r7165w11slu-amd-ryzen-7-250-16gb-512gb-amd-radeon-14-inch-fhd-office",
+        "price": 24990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop Gaming OMEN 14-fb0135TX AY8V1PA | Intel Core Ultra 7 155H, 16GB, 1TB, RTX 4060 8GB, 14 inch 2.8K OLED 120Hz",
+    "brand": "Unknown",
+    "category": "Laptop",
+    "description": "Dòng laptop Unknown mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-gaming-omen-14-fb0135tx-ay8v1pa-intel-core-ultra-7-155h-16gb-1tb-rtx-4060-8gb-14-inch-2.8k-oled-120hz",
+        "price": 53990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ultra 7",
+          "ram": "16GB",
+          "storage": "1TB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4494_30749_laptop_hp_omen_14_fb0135tx_ay8v1pa_4.jpg",
+          "https://laptopaz.vn/media/product/4494_30749_laptop_hp_omen_14_fb0135tx_ay8v1pa_3.jpg",
+          "https://laptopaz.vn/media/product/4494_30749_laptop_hp_omen_14_fb0135tx_ay8v1pa_2.jpg",
+          "https://laptopaz.vn/media/product/4494_30749_laptop_hp_omen_14_fb0135tx_ay8v1pa_1.jpg",
+          "https://laptopaz.vn/media/product/4494_30749_laptop_hp_omen_14_fb0135tx_ay8v1pa.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "[Like New] Lenovo Legion 5 15AHP10 83M0002XVN | Ryzen 7 260, 24GB, 512GB, RTX 5050 8GB, 15.1'' 2K+ OLED 165Hz",
+    "brand": "HP",
+    "category": "Laptop",
+    "description": "Dòng laptop HP mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "like-new-lenovo-legion-5-15ahp10-83m0002xvn-ryzen-7-260-24gb-512gb-rtx-5050-8gb-15.1-2k-oled-165hz",
+        "price": 36890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "24GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop Gaming HP Victus 15-fa2013dx NKFV | Core i5-13420H, 8GB, 512GB, RTX 3050 6GB, 15.6 inch FHD 144Hz",
+    "brand": "HP",
+    "category": "Laptop",
+    "description": "Dòng laptop HP mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-gaming-hp-victus-15-fa2013-nkfv-core-i5-13420h-8gb-512gb-rtx-3050-6gb-15.6-inch-fhd-144hz",
+        "price": 19390000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i5-13420",
+          "ram": "8GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4422_29867_laptop_hp_victus_15_fb3116ax_bx8u4pa_081225_4.jpg",
+          "https://laptopaz.vn/media/product/4422_29867_laptop_hp_victus_15_fb3116ax_bx8u4pa_a_2.jpg",
+          "https://laptopaz.vn/media/product/4422_29867_laptop_hp_victus_15_fb3116ax_bx8u4pa_a_1.jpg",
+          "https://laptopaz.vn/media/product/4422_29867_laptop_hp_victus_15_fb3116ax_bx8u4pa_a_4.jpg",
+          "https://laptopaz.vn/media/product/4422_29867_laptop_hp_victus_15_fb3116ax_bx8u4pa_a.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Gaming Nitro V 15 ProPanel ANV15-41-R0FE NH.QPFSV.005 | Ryzen 7-7735HS, 16GB, 512GB, RTX 3050, 15.6 inch FHD 180Hz",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-gaming-nitro-v-15-propanel-anv15-41-r0fe-nh.qpfsv.005-ryzen-7-7735hs-16gb-512gb-rtx-3050-15.6-inch-fhd-180hz",
+        "price": 26990000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 7",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Laptop Acer Gaming Nitro V 15 ProPanel ANV15-41-R7CR NH.QPESV.003 | Ryzen 5-7535HS, 16GB, 512GB, RTX 4050, 15.6 inch FHD 180Hz",
+    "brand": "Acer",
+    "category": "Laptop",
+    "description": "Dòng laptop Acer mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "laptop-acer-gaming-nitro-v-15-propanel-anv15-41-r7cr-nh.qpesv.003-ryzen-5-7535hs-16gb-512gb-rtx-4050-15.6-inch-fhd-180hz",
+        "price": 27690000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "Ryzen 5",
+          "ram": "16GB",
+          "storage": "512GB"
+        },
+        "image_urls": []
+      }
+    ]
+  },
+  {
+    "name": "Lenovo IdeaPad Slim 3 16IRH10 83K20004VN | Intel Core i7-13620H, 24GB, 512GB, Intel UHD, 16 inch WUXGA IPS",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "description": "Dòng laptop Lenovo mạnh mẽ, chính hãng tại LaptopAZ.",
+    "variants": [
+      {
+        "sku": "lenovo-ideapad-slim-3-16irh10-83k20004vn-intel-core-i7-13620h-24gb-512gb-intel-uhd-16-inch-wuxga-ips-60hz",
+        "price": 22890000.0,
+        "color": "Standard",
+        "specs": {
+          "cpu": "i7-13620",
+          "ram": "24GB",
+          "storage": "512GB"
+        },
+        "image_urls": [
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__2.jpg",
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__3.jpg",
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__4.jpg",
+          "https://laptopaz.vn/media/product/4038_20786_lenovo_ideapad_slim_3_16irh10__5.jpg",
+          "https://laptopaz.vn/media/product/4378_"
+        ]
+      }
+    ]
+  }
+]
