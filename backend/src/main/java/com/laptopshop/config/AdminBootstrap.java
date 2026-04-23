@@ -29,6 +29,7 @@ public class AdminBootstrap implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        System.err.println(">>>> AdminBootstrap is RUNNING! adminEmail=" + adminEmail);
         if (userRepository.findByEmail(adminEmail).isEmpty()) {
             log.info("Creating default admin user: {}", adminEmail);
             User admin = User.builder()
