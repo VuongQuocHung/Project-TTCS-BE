@@ -1,7 +1,6 @@
 package com.laptopshop.controller.admin;
 
 import com.laptopshop.dto.DashboardStatsDTO;
-import com.laptopshop.dto.LowStockDTO;
 import com.laptopshop.dto.OrderDTO;
 import com.laptopshop.dto.PageResponseDTO;
 import com.laptopshop.entity.OrderStatus;
@@ -12,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v1/admin/orders")
@@ -42,10 +41,5 @@ public class AdminOrderController {
     @GetMapping("/dashboard/stats")
     public DashboardStatsDTO getGlobalStats() {
         return dashboardService.getStats(null);
-    }
-
-    @GetMapping("/dashboard/low-stock")
-    public List<LowStockDTO> getGlobalLowStock() {
-        return dashboardService.getLowStockAlerts(null);
     }
 }
