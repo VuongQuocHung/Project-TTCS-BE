@@ -1,7 +1,7 @@
 package com.laptopshop.controller.manager;
 
+import com.laptopshop.dto.OrderDTO;
 import com.laptopshop.dto.PageResponseDTO;
-import com.laptopshop.entity.Order;
 import com.laptopshop.entity.OrderStatus;
 import com.laptopshop.security.SecurityUtils;
 import com.laptopshop.service.OrderService;
@@ -20,7 +20,7 @@ public class ManagerOrderController {
     private final OrderService orderService;
 
     @GetMapping
-    public PageResponseDTO<Order> getBranchOrders(
+    public PageResponseDTO<OrderDTO> getBranchOrders(
             @RequestParam(required = false) OrderStatus status,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {

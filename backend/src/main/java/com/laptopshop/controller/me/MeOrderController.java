@@ -1,7 +1,7 @@
 package com.laptopshop.controller.me;
 
+import com.laptopshop.dto.OrderDTO;
 import com.laptopshop.dto.OrderRequest;
-import com.laptopshop.entity.Order;
 import com.laptopshop.security.SecurityUtils;
 import com.laptopshop.service.OrderService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,19 +20,19 @@ public class MeOrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public Order placeOrder(@Valid @RequestBody OrderRequest request) {
+    public OrderDTO placeOrder(@Valid @RequestBody OrderRequest request) {
         Long userId = SecurityUtils.getCurrentUserId();
         return orderService.createOrder(request, userId);
     }
 
     @GetMapping
-    public List<Order> getMyOrders() {
+    public List<OrderDTO> getMyOrders() {
         Long userId = SecurityUtils.getCurrentUserId();
         return orderService.getMyOrders(userId);
     }
 
     @GetMapping("/{id}")
-    public Order getMyOrderDetail(@PathVariable Long id) {
+    public OrderDTO getMyOrderDetail(@PathVariable Long id) {
         Long userId = SecurityUtils.getCurrentUserId();
         return orderService.getMyOrderDetail(id, userId);
     }

@@ -3,6 +3,7 @@ package com.laptopshop.controller.admin;
 import com.laptopshop.dto.PageResponseDTO;
 import com.laptopshop.dto.ProductDTO;
 import com.laptopshop.dto.ProductFilterRequest;
+import com.laptopshop.dto.ProductImageDTO;
 import com.laptopshop.entity.ProductImage;
 import com.laptopshop.entity.ProductVariant;
 import com.laptopshop.repository.ProductImageRepository;
@@ -57,7 +58,7 @@ public class AdminProductController {
     }
 
     @PostMapping("/variants/{variantId}/images")
-    public ResponseEntity<ProductImage> addProductImage(@PathVariable Long variantId, @RequestParam String imageUrl) {
+    public ResponseEntity<ProductImageDTO> addProductImage(@PathVariable Long variantId, @RequestParam String imageUrl) {
         ProductVariant variant = variantRepository.findById(variantId)
                 .orElseThrow(() -> new RuntimeException("Variant not found"));
         
@@ -66,6 +67,10 @@ public class AdminProductController {
                 .variant(variant)
                 .build();
         
-        return ResponseEntity.ok(productImageRepository.save(image));
+        ProductImage saved = productImageRepository.save(image);
+        return ResponseEntity.ok(ProductImageDTO.builder()
+                .id(saved.getId())
+                .imageUrl(saved.getImageUrl())
+                .build());
     }
 }

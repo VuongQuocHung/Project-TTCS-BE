@@ -1,5 +1,7 @@
 package com.laptopshop.service;
 
+import com.laptopshop.dto.OrderDTO;
+import com.laptopshop.dto.OrderItemDTO;
 import com.laptopshop.dto.OrderItemRequest;
 import com.laptopshop.dto.OrderRequest;
 import com.laptopshop.dto.PageResponseDTO;
@@ -36,7 +38,7 @@ public class OrderService {
     private final InventoryLogRepository inventoryLogRepository;
 
     @Transactional
-    public Order createOrder(OrderRequest request, Long userId) {
+    public OrderDTO createOrder(OrderRequest request, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         Branch branch = branchRepository.findById(request.getBranchId())
@@ -122,7 +124,7 @@ public class OrderService {
         // 4. Clear Cart
         cartService.clearCart(userId);
 
-        return savedOrder;
+        return mapToDTO(savedOrder);
     }
 
     private double calculateDiscount(Voucher voucher, double total) {
@@ -138,11 +140,11 @@ public class OrderService {
         return Math.min(discount, total);
     }
 
-    public PageResponseDTO<Order> getAllOrders(OrderStatus status, Long branchId, Long userId, int page, int size) {
+    public PageResponseDTO<OrderDTO> getAllOrders(OrderStatus status, Long branchId, Long userId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Specification<Order> spec = OrderSpecification.filter(status != null ? status.name() : null, branchId, userId);
         Page<Order> orderPage = orderRepository.findAll(spec, pageable);
-        return PageResponseDTO.of(orderPage);
+        return PageResponseDTO.of(orderPage.map(this::mapToDTO));
     }
 
     @PreAuthorize("hasRole('ADMIN') or (hasRole('MANAGER') and @orderService.isOrderInBranch(#orderId, principal.branchId))")
@@ -218,12 +220,38 @@ public class OrderService {
         return order != null && order.getBranch().getId().equals(branchId);
     }
 
-    public List<Order> getMyOrders(Long userId) {
-        return orderRepository.findByUserId(userId);
+    public List<OrderDTO> getMyOrders(Long userId) {
+        return orderRepository.findByUserId(userId).stream()
+                .map(this::mapToDTO)
+                .toList();
     }
 
-    public Order getMyOrderDetail(Long orderId, Long userId) {
-        return orderRepository.findByIdAndUserId(orderId, userId)
+    public OrderDTO getMyOrderDetail(Long orderId, Long userId) {
+        Order order = orderRepository.findByIdAndUserId(orderId, userId)
                 .orElseThrow(() -> new AccessDeniedException("You do not have permission to view this order or order not found"));
+        return mapToDTO(order);
+    }
+
+    private OrderDTO mapToDTO(Order order) {
+        return OrderDTO.builder()
+                .id(order.getId())
+                .userId(order.getUser().getId())
+                .branchId(order.getBranch().getId())
+                .status(order.getStatus().name())
+                .totalPrice(order.getTotalPrice())
+                .discountAmount(order.getDiscountAmount())
+                .voucherCode(order.getVoucher() != null ? order.getVoucher().getCode() : null)
+                .createdAt(order.getCreatedAt())
+                .items(order.getItems().stream()
+                        .map(item -> OrderItemDTO.builder()
+                                .id(item.getId())
+                                .variantId(item.getVariant().getId())
+                                .productName(item.getVariant().getProduct().getName())
+                                .sku(item.getVariant().getSku())
+                                .quantity(item.getQuantity())
+                                .price(item.getPrice())
+                                .build())
+                        .toList())
+                .build();
     }
 }

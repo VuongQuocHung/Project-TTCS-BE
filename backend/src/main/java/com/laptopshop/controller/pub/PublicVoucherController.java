@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/pub/vouchers")
+@RequestMapping("/api/v1/public/vouchers")
 @RequiredArgsConstructor
 @Tag(name = "Voucher", description = "Quản lý mã giảm giá (Vouchers)")
 public class PublicVoucherController {

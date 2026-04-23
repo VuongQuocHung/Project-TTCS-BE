@@ -2,8 +2,8 @@ package com.laptopshop.controller.admin;
 
 import com.laptopshop.dto.DashboardStatsDTO;
 import com.laptopshop.dto.LowStockDTO;
+import com.laptopshop.dto.OrderDTO;
 import com.laptopshop.dto.PageResponseDTO;
-import com.laptopshop.entity.Order;
 import com.laptopshop.entity.OrderStatus;
 import com.laptopshop.service.DashboardService;
 import com.laptopshop.service.OrderService;
@@ -25,7 +25,7 @@ public class AdminOrderController {
     private final DashboardService dashboardService;
 
     @GetMapping
-    public PageResponseDTO<Order> getAllOrders(
+    public PageResponseDTO<OrderDTO> getAllOrders(
             @RequestParam(required = false) OrderStatus status,
             @RequestParam(required = false) Long branchId,
             @RequestParam(required = false) Long userId,
