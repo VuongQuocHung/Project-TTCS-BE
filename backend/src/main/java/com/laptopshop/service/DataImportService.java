@@ -63,9 +63,14 @@ public class DataImportService {
 
             List<Map<String, Object>> rawVariants = (List<Map<String, Object>>) rawProduct.get("variants");
             for (Map<String, Object> rawVariant : rawVariants) {
+                String sku = (String) rawVariant.get("sku");
+                if (variantRepository.findBySku(sku).isPresent()) {
+                    continue; // Skip if already exists
+                }
+
                 ProductVariant variant = ProductVariant.builder()
                         .product(product)
-                        .sku((String) rawVariant.get("sku"))
+                        .sku(sku)
                         .price(((Number) rawVariant.get("price")).doubleValue())
                         .color((String) rawVariant.get("color"))
                         .specsJson((Map<String, Object>) rawVariant.get("specs"))
