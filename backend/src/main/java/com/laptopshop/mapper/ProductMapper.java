@@ -3,8 +3,10 @@ package com.laptopshop.mapper;
 import com.laptopshop.dto.InventoryDTO;
 import com.laptopshop.dto.ProductDTO;
 import com.laptopshop.dto.ProductVariantDTO;
+import com.laptopshop.dto.ProductImageDTO;
 import com.laptopshop.entity.Inventory;
 import com.laptopshop.entity.Product;
+import com.laptopshop.entity.ProductImage;
 import com.laptopshop.entity.ProductVariant;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -24,6 +26,8 @@ public interface ProductMapper {
     @Mapping(target = "branchId", source = "branch.id")
     @Mapping(target = "branchName", source = "branch.name")
     InventoryDTO toDto(Inventory inventory);
+
+    ProductImageDTO toDto(ProductImage image);
 
     default Integer calculateTotalQuantity(List<Inventory> stocks) {
         if (stocks == null) return 0;

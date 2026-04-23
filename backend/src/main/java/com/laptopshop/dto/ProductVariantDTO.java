@@ -17,4 +17,5 @@ public class ProductVariantDTO {
     private Map<String, Object> specsJson;
     private Integer quantity; // Total or branch-specific quantity
     private List<InventoryDTO> inventories;
+    private List<ProductImageDTO> images;
 }
