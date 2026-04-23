@@ -2,6 +2,7 @@ package com.laptopshop.controller.admin;
 
 import com.laptopshop.dto.UserDTO;
 import com.laptopshop.service.UserService;
+import com.laptopshop.entity.Role;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,5 +32,10 @@ public class AdminUserController {
     @PutMapping("/{userId}/status")
     public void toggleUserStatus(@PathVariable Long userId, @RequestParam boolean enabled) {
         userService.toggleUserStatus(userId, enabled);
+    }
+
+    @PutMapping("/{userId}/role")
+    public void updateUserRole(@PathVariable Long userId, @RequestParam Role role) {
+        userService.updateUserRole(userId, role);
     }
 }

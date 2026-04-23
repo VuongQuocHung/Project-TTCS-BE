@@ -33,6 +33,7 @@ public class OrderService {
     private final VoucherService voucherService;
     private final CartService cartService;
     private final PaymentRepository paymentRepository;
+    private final InventoryLogRepository inventoryLogRepository;
 
     @Transactional
     public Order createOrder(OrderRequest request, Long userId) {
@@ -65,8 +66,18 @@ public class OrderService {
             }
 
             // 2. Deduct inventory
-            inventory.setQuantity(inventory.getQuantity() - itemReq.getQuantity());
+            Integer oldQuantity = inventory.getQuantity();
+            inventory.setQuantity(oldQuantity - itemReq.getQuantity());
             inventoryRepository.save(inventory);
+
+            // Log inventory change
+            inventoryLogRepository.save(InventoryLog.builder()
+                    .branch(branch)
+                    .variant(variant)
+                    .oldQuantity(oldQuantity)
+                    .newQuantity(inventory.getQuantity())
+                    .action("ORDER_PLACEMENT")
+                    .build());
 
             OrderItem orderItem = OrderItem.builder()
                     .order(order)
@@ -142,8 +153,47 @@ public class OrderService {
         
         validateStatusTransition(order.getStatus(), status);
         
+        if (status == OrderStatus.CANCELLED) {
+            restoreInventory(order, "ORDER_CANCELLATION_BY_ADMIN");
+        }
+        
         order.setStatus(status);
         orderRepository.save(order);
+    }
+
+    @Transactional
+    public void cancelOrder(Long userId, Long orderId) {
+        Order order = orderRepository.findByIdAndUserId(orderId, userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found or you don't have permission"));
+        
+        if (order.getStatus() != OrderStatus.PENDING) {
+            throw new RuntimeException("Only PENDING orders can be cancelled by user");
+        }
+        
+        restoreInventory(order, "ORDER_CANCELLATION_BY_USER");
+        order.setStatus(OrderStatus.CANCELLED);
+        orderRepository.save(order);
+    }
+
+    private void restoreInventory(Order order, String action) {
+        for (OrderItem item : order.getItems()) {
+            InventoryId inventoryId = new InventoryId(order.getBranch().getId(), item.getVariant().getId());
+            Inventory inventory = inventoryRepository.findById(inventoryId)
+                    .orElseThrow(() -> new RuntimeException("Inventory not found for SKU: " + item.getVariant().getSku()));
+            
+            Integer oldQuantity = inventory.getQuantity();
+            inventory.setQuantity(oldQuantity + item.getQuantity());
+            inventoryRepository.save(inventory);
+
+            // Log inventory change
+            inventoryLogRepository.save(InventoryLog.builder()
+                    .branch(order.getBranch())
+                    .variant(item.getVariant())
+                    .oldQuantity(oldQuantity)
+                    .newQuantity(inventory.getQuantity())
+                    .action(action)
+                    .build());
+        }
     }
 
     private void validateStatusTransition(OrderStatus current, OrderStatus next) {

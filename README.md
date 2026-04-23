@@ -47,7 +47,7 @@ Tuy nhiên, bạn nên đảm bảo MySQL đang chạy với thông tin:
 ### 3. Cấu hình ứng dụng
 Mọi cấu hình nằm tại `backend/src/main/resources/application.properties`.
 Lưu ý đường dẫn file Import:
-- `app.import.path=/home/ducva/Project-TTCS-BE/laptop_data/raw_laptops.json`
+- `app.import.path=${APP_IMPORT_PATH:../laptop_data/final_gallery_data.json}`
 
 ---
 

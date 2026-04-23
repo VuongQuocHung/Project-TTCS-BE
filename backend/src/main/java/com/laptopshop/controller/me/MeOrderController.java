@@ -36,4 +36,10 @@ public class MeOrderController {
         Long userId = SecurityUtils.getCurrentUserId();
         return orderService.getMyOrderDetail(id, userId);
     }
+
+    @PutMapping("/{id}/cancel")
+    public void cancelOrder(@PathVariable Long id) {
+        Long userId = SecurityUtils.getCurrentUserId();
+        orderService.cancelOrder(userId, id);
+    }
 }
