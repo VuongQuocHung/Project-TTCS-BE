@@ -1,4 +1,4 @@
-package com.laptopshop.controller.file;
+package com.laptopshop.controller.admin;
 
 import com.laptopshop.service.FileService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,11 +17,11 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/admin/upload")
+@RequestMapping("/api/v1/admin/products/upload-image")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('ADMIN')")
 @Tag(name = "Product", description = "Quản lý sản phẩm (Products)")
-public class UploadController {
+public class AdminProductImageController {
 
     private final FileService fileService;
 
