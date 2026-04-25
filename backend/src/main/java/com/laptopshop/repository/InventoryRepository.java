@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface InventoryRepository extends JpaRepository<Inventory, InventoryId> {
     List<Inventory> findByBranchIdAndQuantityLessThan(Long branchId, Integer quantity);
+    List<Inventory> findByVariantId(Long variantId);
     List<Inventory> findByQuantityLessThan(Integer quantity);
 }
