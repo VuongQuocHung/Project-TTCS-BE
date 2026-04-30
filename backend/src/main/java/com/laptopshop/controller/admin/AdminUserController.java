@@ -1,5 +1,6 @@
 package com.laptopshop.controller.admin;
 
+import com.laptopshop.dto.AdminUserRequest;
 import com.laptopshop.dto.UserDTO;
 import com.laptopshop.service.UserService;
 import com.laptopshop.entity.Role;
@@ -22,6 +23,26 @@ public class AdminUserController {
     @GetMapping
     public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @GetMapping("/{id}")
+    public UserDTO getUser(@PathVariable Long id) {
+        return userService.getUser(id);
+    }
+
+    @PostMapping
+    public UserDTO createUser(@RequestBody AdminUserRequest request) {
+        return userService.createUser(request);
+    }
+
+    @PutMapping("/{id}")
+    public UserDTO updateUser(@PathVariable Long id, @RequestBody AdminUserRequest request) {
+        return userService.updateUser(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
     }
 
     @PostMapping("/{userId}/assign-branch/{branchId}")

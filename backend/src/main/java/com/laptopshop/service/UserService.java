@@ -59,6 +59,77 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public UserDTO getUser(Long userId) {
+        return userRepository.findById(userId)
+                .map(userMapper::toDto)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Transactional
+    public UserDTO createUser(AdminUserRequest request) {
+        if (userRepository.existsByUsername(request.getUsername())) {
+            throw new RuntimeException("Username is already taken");
+        }
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email is already in use");
+        }
+        if (request.getPassword() == null || request.getPassword().isBlank()) {
+            throw new RuntimeException("Password is required");
+        }
+
+        User user = User.builder()
+                .username(request.getUsername())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .fullName(request.getFullName())
+                .phoneNumber(request.getPhoneNumber())
+                .address(request.getAddress())
+                .role(request.getRole() != null ? request.getRole() : Role.CUSTOMER)
+                .enabled(request.getEnabled() == null || request.getEnabled())
+                .branch(resolveBranch(request.getBranchId()))
+                .build();
+
+        return userMapper.toDto(userRepository.save(user));
+    }
+
+    @Transactional
+    public UserDTO updateUser(Long userId, AdminUserRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (request.getUsername() != null && !request.getUsername().equals(user.getUsername())
+                && userRepository.existsByUsername(request.getUsername())) {
+            throw new RuntimeException("Username is already taken");
+        }
+        if (request.getEmail() != null && !request.getEmail().equals(user.getEmail())
+                && userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email is already in use");
+        }
+
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setFullName(request.getFullName());
+        user.setPhoneNumber(request.getPhoneNumber());
+        user.setAddress(request.getAddress());
+        user.setRole(request.getRole() != null ? request.getRole() : Role.CUSTOMER);
+        user.setEnabled(request.getEnabled() == null || request.getEnabled());
+        user.setBranch(resolveBranch(request.getBranchId()));
+
+        if (request.getPassword() != null && !request.getPassword().isBlank()) {
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+        }
+
+        return userMapper.toDto(userRepository.save(user));
+    }
+
+    @Transactional
+    public void deleteUser(Long userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new RuntimeException("User not found");
+        }
+        userRepository.deleteById(userId);
+    }
+
     @Transactional
     public UserDTO assignManagerToBranch(Long userId, Long branchId) {
         User user = userRepository.findById(userId)
@@ -69,6 +140,14 @@ public class UserService {
         user.setRole(Role.MANAGER);
         user.setBranch(branch);
         return userMapper.toDto(userRepository.save(user));
+    }
+
+    private Branch resolveBranch(Long branchId) {
+        if (branchId == null) {
+            return null;
+        }
+        return branchRepository.findById(branchId)
+                .orElseThrow(() -> new RuntimeException("Branch not found"));
     }
 
     @Transactional

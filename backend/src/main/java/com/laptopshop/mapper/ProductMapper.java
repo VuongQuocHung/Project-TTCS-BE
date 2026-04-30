@@ -16,7 +16,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
     @Mapping(target = "categoryName", source = "category.name")
+    @Mapping(target = "categoryId", source = "category.id")
     @Mapping(target = "brandName", source = "brand.name")
+    @Mapping(target = "brandId", source = "brand.id")
     ProductDTO toDto(Product product);
 
     @Mapping(target = "inventories", source = "stocks")
