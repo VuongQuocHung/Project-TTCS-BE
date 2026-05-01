@@ -53,10 +53,10 @@ public class UserService {
     }
 
     // Admin operations
-    public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream()
-                .map(userMapper::toDto)
-                .collect(Collectors.toList());
+    public PageResponseDTO<UserDTO> getUsers(UserFilterRequest filter, int page, int size) {
+        org.springframework.data.domain.Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size, org.springframework.data.domain.Sort.by("id").descending());
+        org.springframework.data.domain.Page<User> userPage = userRepository.findAll(com.laptopshop.repository.specification.UserSpecification.filter(filter), pageable);
+        return PageResponseDTO.of(userPage.map(userMapper::toDto));
     }
 
     public UserDTO getUser(Long userId) {

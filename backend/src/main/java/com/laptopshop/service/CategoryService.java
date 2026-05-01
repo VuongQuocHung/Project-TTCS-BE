@@ -22,14 +22,14 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
 
-    public PageResponseDTO<CategoryDTO> getCategories(int page, int size) {
+    public PageResponseDTO<CategoryDTO> getCategories(int page, int size, boolean isAdmin) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
-        Page<Category> categoryPage = categoryRepository.findAll(pageable);
+        Page<Category> categoryPage = categoryRepository.findAll(com.laptopshop.repository.specification.CategorySpecification.filter(isAdmin), pageable);
         return PageResponseDTO.of(categoryPage.map(categoryMapper::toDto));
     }
 
-    public List<CategoryDTO> getAllCategories() {
-        return categoryRepository.findAll().stream()
+    public List<CategoryDTO> getAllCategories(boolean isAdmin) {
+        return categoryRepository.findAll(com.laptopshop.repository.specification.CategorySpecification.filter(isAdmin)).stream()
                 .map(categoryMapper::toDto)
                 .collect(Collectors.toList());
     }

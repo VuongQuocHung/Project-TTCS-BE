@@ -140,9 +140,13 @@ public class OrderService {
         return Math.min(discount, total);
     }
 
-    public PageResponseDTO<OrderDTO> getAllOrders(OrderStatus status, Long branchId, Long userId, int page, int size) {
+    public PageResponseDTO<OrderDTO> getAllOrders(com.laptopshop.dto.OrderFilterRequest filter, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
-        Specification<Order> spec = OrderSpecification.filter(status != null ? status.name() : null, branchId, userId);
+        Specification<Order> spec = OrderSpecification.filter(
+                filter.getStatus() != null ? filter.getStatus().name() : null, 
+                filter.getBranchId(), 
+                filter.getUserId()
+        );
         Page<Order> orderPage = orderRepository.findAll(spec, pageable);
         return PageResponseDTO.of(orderPage.map(this::mapToDTO));
     }
@@ -218,12 +222,6 @@ public class OrderService {
     public boolean isOrderInBranch(Long orderId, Long branchId) {
         Order order = orderRepository.findById(orderId).orElse(null);
         return order != null && order.getBranch().getId().equals(branchId);
-    }
-
-    public List<OrderDTO> getMyOrders(Long userId) {
-        return orderRepository.findByUserId(userId).stream()
-                .map(this::mapToDTO)
-                .toList();
     }
 
     public OrderDTO getMyOrderDetail(Long orderId, Long userId) {

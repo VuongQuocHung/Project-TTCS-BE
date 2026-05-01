@@ -25,6 +25,10 @@ public class Brand extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Builder.Default
+    @Column(nullable = false)
+    private boolean enabled = true;
+
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Product> products;
 }

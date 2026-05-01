@@ -23,12 +23,11 @@ public class AdminOrderController {
 
     @GetMapping
     public PageResponseDTO<OrderDTO> getAllOrders(
-            @RequestParam(required = false) OrderStatus status,
-            @RequestParam(required = false) Long branchId,
-            @RequestParam(required = false) Long userId,
+            @org.springdoc.core.annotations.ParameterObject com.laptopshop.dto.OrderFilterRequest filterRequest,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return orderService.getAllOrders(status, branchId, userId, page, size);
+        if (filterRequest == null) filterRequest = new com.laptopshop.dto.OrderFilterRequest();
+        return orderService.getAllOrders(filterRequest, page, size);
     }
 
     @PutMapping("/{id}/status")

@@ -22,14 +22,14 @@ public class BrandService {
     private final BrandRepository brandRepository;
     private final BrandMapper brandMapper;
 
-    public PageResponseDTO<BrandDTO> getBrands(int page, int size) {
+    public PageResponseDTO<BrandDTO> getBrands(int page, int size, boolean isAdmin) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
-        Page<Brand> brandPage = brandRepository.findAll(pageable);
+        Page<Brand> brandPage = brandRepository.findAll(com.laptopshop.repository.specification.BrandSpecification.filter(isAdmin), pageable);
         return PageResponseDTO.of(brandPage.map(brandMapper::toDto));
     }
 
-    public List<BrandDTO> getAllBrands() {
-        return brandRepository.findAll().stream()
+    public List<BrandDTO> getAllBrands(boolean isAdmin) {
+        return brandRepository.findAll(com.laptopshop.repository.specification.BrandSpecification.filter(isAdmin)).stream()
                 .map(brandMapper::toDto)
                 .collect(Collectors.toList());
     }

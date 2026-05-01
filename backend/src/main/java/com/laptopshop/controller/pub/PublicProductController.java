@@ -20,10 +20,11 @@ public class PublicProductController {
 
     @GetMapping
     public PageResponseDTO<ProductDTO> getProducts(
-            ProductFilterRequest filterRequest,
+            @org.springdoc.core.annotations.ParameterObject ProductFilterRequest filterRequest,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return productService.getProducts(filterRequest, page, size);
+        if (filterRequest == null) filterRequest = new ProductFilterRequest();
+        return productService.getProducts(filterRequest, page, size, false);
     }
 
     @GetMapping("/suggestions")

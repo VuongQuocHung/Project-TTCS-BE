@@ -31,6 +31,10 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
+    @Builder.Default
+    @Column(nullable = false)
+    private boolean enabled = true;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductVariant> variants;
 }
