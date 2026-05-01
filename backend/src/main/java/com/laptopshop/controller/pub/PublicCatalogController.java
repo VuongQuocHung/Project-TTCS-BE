@@ -27,7 +27,7 @@ public class PublicCatalogController {
 
     @GetMapping("/categories")
     public List<CategoryDTO> getCategories() {
-        return categoryService.getAllCategories();
+        return categoryService.getAllCategories(false);
     }
 
     @GetMapping("/brands")

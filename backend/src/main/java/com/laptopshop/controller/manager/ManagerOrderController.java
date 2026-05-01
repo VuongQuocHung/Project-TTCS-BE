@@ -21,11 +21,12 @@ public class ManagerOrderController {
 
     @GetMapping
     public PageResponseDTO<OrderDTO> getBranchOrders(
-            @RequestParam(required = false) OrderStatus status,
+            @org.springdoc.core.annotations.ParameterObject com.laptopshop.dto.OrderFilterRequest filterRequest,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Long branchId = SecurityUtils.getCurrentBranchId();
-        return orderService.getAllOrders(status, branchId, null, page, size);
+        if (filterRequest == null) filterRequest = new com.laptopshop.dto.OrderFilterRequest();
+        filterRequest.setBranchId(SecurityUtils.getCurrentBranchId());
+        return orderService.getAllOrders(filterRequest, page, size);
     }
 
     @PutMapping("/{id}/status")

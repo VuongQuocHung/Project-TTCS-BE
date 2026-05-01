@@ -30,10 +30,11 @@ public class AdminProductController {
 
     @GetMapping
     public PageResponseDTO<ProductDTO> getAllProducts(
-            ProductFilterRequest filterRequest,
+            @org.springdoc.core.annotations.ParameterObject ProductFilterRequest filterRequest,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return productService.getProducts(filterRequest, page, size);
+        if (filterRequest == null) filterRequest = new ProductFilterRequest();
+        return productService.getProducts(filterRequest, page, size, true);
     }
 
     @PostMapping

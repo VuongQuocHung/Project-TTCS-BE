@@ -71,12 +71,12 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public PageResponseDTO<ProductDTO> getProducts(ProductFilterRequest request, int page, int size) {
+    public PageResponseDTO<ProductDTO> getProducts(ProductFilterRequest request, int page, int size, boolean isAdmin) {
         Sort sort = Sort.by(Sort.Direction.fromString(request.getSortDir() != null ? request.getSortDir() : "DESC"), 
                 request.getSortBy() != null ? request.getSortBy() : "id");
         Pageable pageable = PageRequest.of(page, size, sort);
         
-        Specification<Product> spec = ProductSpecification.filter(request);
+        Specification<Product> spec = ProductSpecification.filter(request, isAdmin);
         Page<Product> productPage = productRepository.findAll(spec, pageable);
         
         return PageResponseDTO.of(productPage.map(productMapper::toDto));

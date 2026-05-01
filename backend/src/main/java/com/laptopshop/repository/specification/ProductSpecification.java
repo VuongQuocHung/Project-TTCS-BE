@@ -10,9 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductSpecification {
-    public static Specification<Product> filter(ProductFilterRequest request) {
+    public static Specification<Product> filter(ProductFilterRequest request, boolean isAdmin) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
+
+            // 0. Public/Admin Visibility Filter
+            if (!isAdmin) {
+                predicates.add(criteriaBuilder.equal(root.get("enabled"), true));
+            }
 
             // 1. Keyword search (Name, Brand, Category) - Normalized
             if (request.getKeyword() != null && !request.getKeyword().isEmpty()) {

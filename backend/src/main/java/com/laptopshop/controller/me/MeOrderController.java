@@ -26,9 +26,14 @@ public class MeOrderController {
     }
 
     @GetMapping
-    public List<OrderDTO> getMyOrders() {
+    public com.laptopshop.dto.PageResponseDTO<OrderDTO> getMyOrders(
+            @org.springdoc.core.annotations.ParameterObject com.laptopshop.dto.OrderFilterRequest filterRequest,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
         Long userId = SecurityUtils.getCurrentUserId();
-        return orderService.getMyOrders(userId);
+        if (filterRequest == null) filterRequest = new com.laptopshop.dto.OrderFilterRequest();
+        filterRequest.setUserId(userId);
+        return orderService.getAllOrders(filterRequest, page, size);
     }
 
     @GetMapping("/{id}")

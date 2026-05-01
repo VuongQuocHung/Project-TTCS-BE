@@ -21,8 +21,12 @@ public class AdminUserController {
     private final UserService userService;
 
     @GetMapping
-    public List<UserDTO> getAllUsers() {
-        return userService.getAllUsers();
+    public com.laptopshop.dto.PageResponseDTO<UserDTO> getAllUsers(
+            @org.springdoc.core.annotations.ParameterObject com.laptopshop.dto.UserFilterRequest filterRequest,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        if (filterRequest == null) filterRequest = new com.laptopshop.dto.UserFilterRequest();
+        return userService.getUsers(filterRequest, page, size);
     }
 
     @GetMapping("/{id}")

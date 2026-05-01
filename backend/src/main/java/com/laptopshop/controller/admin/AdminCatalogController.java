@@ -27,7 +27,7 @@ public class AdminCatalogController {
     public PageResponseDTO<CategoryDTO> getAllCategories(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return categoryService.getCategories(page, size);
+        return categoryService.getCategories(page, size, true);
     }
 
     @PostMapping("/categories")
@@ -50,7 +50,7 @@ public class AdminCatalogController {
     public PageResponseDTO<BrandDTO> getAllBrands(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return brandService.getBrands(page, size);
+        return brandService.getBrands(page, size, true);
     }
 
     @PostMapping("/brands")
