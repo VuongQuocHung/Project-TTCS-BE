@@ -89,6 +89,23 @@ public class ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
+    @Transactional(readOnly = true)
+    public List<String> getProductImages(Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        if (product.getVariants() == null) {
+            return new ArrayList<>();
+        }
+
+        return product.getVariants().stream()
+                .filter(variant -> variant.getImages() != null)
+                .flatMap(variant -> variant.getImages().stream())
+                .map(ProductImage::getImageUrl)
+                .distinct()
+                .toList();
+    }
+
     @Transactional
     public ProductDTO createProduct(ProductDTO dto) {
         Product product = Product.builder()

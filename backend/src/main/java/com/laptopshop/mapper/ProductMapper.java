@@ -35,4 +35,21 @@ public interface ProductMapper {
         if (stocks == null) return 0;
         return stocks.stream().mapToInt(Inventory::getQuantity).sum();
     }
+
+    @Mapping(target = "category", ignore = true)
+    @Mapping(target = "brand", ignore = true)
+    @Mapping(target = "variants", ignore = true)
+    Product toEntity(ProductDTO dto);
+
+    @Mapping(target = "product", ignore = true)
+    @Mapping(target = "images", ignore = true)
+    @Mapping(target = "stocks", ignore = true)
+    ProductVariant toEntity(ProductVariantDTO dto);
+
+    @Mapping(target = "branch", ignore = true)
+    @Mapping(target = "variant", ignore = true)
+    Inventory toEntity(InventoryDTO dto);
+
+    @Mapping(target = "variant", ignore = true)
+    ProductImage toEntity(ProductImageDTO dto);
 }
