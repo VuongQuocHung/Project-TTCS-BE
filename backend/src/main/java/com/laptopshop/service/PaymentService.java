@@ -4,6 +4,7 @@ import com.laptopshop.entity.Order;
 import com.laptopshop.entity.Payment;
 import com.laptopshop.entity.PaymentMethod;
 import com.laptopshop.entity.PaymentStatus;
+import com.laptopshop.entity.OrderStatus;
 import com.laptopshop.repository.OrderRepository;
 import com.laptopshop.repository.PaymentRepository;
 import com.stripe.Stripe;
@@ -26,6 +27,7 @@ public class PaymentService {
 
     private final OrderRepository orderRepository;
     private final PaymentRepository paymentRepository;
+    private final EmailService emailService;
 
     @Value("${vnpay.tmn-code:TC8H9799}")
     private String vnpTmnCode;
@@ -65,6 +67,9 @@ public class PaymentService {
 
     @Value("${zalopay.url:https://sb-openapi.zalopay.vn/v2/create}")
     private String zaloUrl;
+
+    @Value("${app.payment.backend-url:http://localhost:8080}")
+    private String backendUrl;
 
     @Transactional
     public String createPaymentUrl(Long orderId, PaymentMethod method, HttpServletRequest request) throws Exception {
@@ -146,7 +151,7 @@ public class PaymentService {
         String orderIdStr = order.getId() + "_" + requestId;
         String orderInfo = "Thanh toan don hang " + order.getId();
         String redirectUrl = "http://localhost:3000/payment/result";
-        String ipnUrl = "http://localhost:8080/api/v1/payments/momo-callback";
+        String ipnUrl = backendUrl + "/api/v1/payments/momo-callback";
         String requestType = "captureWallet";
         String extraData = "";
 
@@ -189,12 +194,13 @@ public class PaymentService {
 
     private String createZaloPayUrl(Order order, long amount) throws Exception {
         String app_time = String.valueOf(System.currentTimeMillis());
-        String app_trans_id = new java.text.SimpleDateFormat("yyMMdd").format(new Date()) + "_" + order.getId();
+        String app_trans_id = new java.text.SimpleDateFormat("yyMMdd").format(new Date()) + "_" + order.getId() + "_" + System.currentTimeMillis();
         String app_user = "laptopshop_user";
         String item = "[]";
         String description = "Thanh toan don hang #" + order.getId();
         String embed_data = "{\"redirecturl\":\"http://localhost:3000/payment/result\"}";
-        String bank_code = "zalopayapp";
+        String bank_code = "";
+        String callback_url = backendUrl + "/api/v1/payments/zalopay-callback";
 
         String data = zaloAppId + "|" + app_trans_id + "|" + app_user + "|" + amount + "|" + app_time + "|" + embed_data + "|" + item;
         String mac = hmacSHA256(zaloKey1, data);
@@ -209,6 +215,7 @@ public class PaymentService {
         requestBody.put("embed_data", embed_data);
         requestBody.put("item", item);
         requestBody.put("description", description);
+        requestBody.put("callback_url", callback_url);
         requestBody.put("mac", mac);
 
         // ZaloPay API expects form-urlencoded, but JSON often works in v2. Let's send x-www-form-urlencoded
@@ -235,7 +242,7 @@ public class PaymentService {
         SessionCreateParams params = SessionCreateParams.builder()
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("http://localhost:3000/payment/result?status=SUCCESS&orderId=" + order.getId())
+                .setSuccessUrl(backendUrl + "/api/v1/payments/stripe-success?orderId=" + order.getId() + "&sessionId={CHECKOUT_SESSION_ID}")
                 .setCancelUrl("http://localhost:3000/payment/result?status=CANCELLED&orderId=" + order.getId())
                 .addLineItem(SessionCreateParams.LineItem.builder()
                         .setQuantity(1L)
@@ -262,13 +269,86 @@ public class PaymentService {
         Order order = orderRepository.findById(orderId).orElseThrow();
         
         if ("00".equals(vnp_ResponseCode)) {
-            order.setPaymentStatus(PaymentStatus.SUCCESS);
-            updatePayment(order, PaymentStatus.SUCCESS, params.get("vnp_TransactionNo"));
+            handlePaymentSuccess(order, params.get("vnp_TransactionNo"));
         } else {
-            order.setPaymentStatus(PaymentStatus.FAILED);
-            updatePayment(order, PaymentStatus.FAILED, params.get("vnp_TransactionNo"));
+            handlePaymentFailure(order, params.get("vnp_TransactionNo"));
         }
         orderRepository.save(order);
+    }
+
+    @Transactional
+    public void processMomoCallback(Map<String, String> params) {
+        // Kiểm tra signature ở đây nếu cần bảo mật cao hơn
+        String resultCode = params.get("resultCode");
+        String orderIdStr = params.get("orderId");
+        Long orderId = Long.parseLong(orderIdStr.split("_")[0]);
+        String transId = params.get("transId");
+
+        Order order = orderRepository.findById(orderId).orElseThrow();
+
+        if ("0".equals(resultCode)) {
+            handlePaymentSuccess(order, transId);
+        } else {
+            handlePaymentFailure(order, transId);
+        }
+        orderRepository.save(order);
+    }
+
+    @Transactional
+    public void processZaloPayCallback(Map<String, Object> body) {
+        // ZaloPay gửi callback dạng POST với JSON chứa data và mac
+        // Ở mức độ đơn giản, ta lấy data ra để xử lý
+        try {
+            String dataStr = (String) body.get("data");
+            // Parse data JSON string
+            com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            Map<String, Object> data = mapper.readValue(dataStr, Map.class);
+            
+            String appTransId = (String) data.get("app_trans_id");
+            Long orderId = Long.parseLong(appTransId.split("_")[1]);
+            String zpTransId = String.valueOf(data.get("zp_trans_id"));
+
+            Order order = orderRepository.findById(orderId).orElseThrow();
+            handlePaymentSuccess(order, zpTransId);
+            orderRepository.save(order);
+        } catch (Exception e) {
+            throw new RuntimeException("ZaloPay callback processing failed", e);
+        }
+    }
+
+    @Transactional
+    public void processStripeSuccess(Long orderId, String sessionId) throws Exception {
+        Stripe.apiKey = stripeSecretKey;
+        Session session = Session.retrieve(sessionId);
+
+        Order order = orderRepository.findById(orderId).orElseThrow();
+
+        if ("paid".equals(session.getPaymentStatus())) {
+            handlePaymentSuccess(order, session.getPaymentIntent());
+        } else {
+            handlePaymentFailure(order, null);
+        }
+        orderRepository.save(order);
+    }
+
+    private void handlePaymentSuccess(Order order, String transactionId) {
+        order.setPaymentStatus(PaymentStatus.SUCCESS);
+        order.setStatus(OrderStatus.CONFIRMED); // Tự động xác nhận đơn hàng khi đã thanh toán
+        updatePayment(order, PaymentStatus.SUCCESS, transactionId);
+
+        // Gửi email thông báo cho khách hàng
+        try {
+            emailService.sendOrderSuccessEmail(order.getUser().getEmail(), order.getId(), order.getTotalPrice());
+        } catch (Exception e) {
+            // Log error but don't fail the payment process
+            System.err.println("Failed to send success email: " + e.getMessage());
+        }
+    }
+
+    private void handlePaymentFailure(Order order, String transactionId) {
+        order.setPaymentStatus(PaymentStatus.FAILED);
+        // Có thể giữ OrderStatus là PENDING để khách thử lại hoặc chuyển thành FAILED
+        updatePayment(order, PaymentStatus.FAILED, transactionId);
     }
 
     private void updatePayment(Order order, PaymentStatus status, String transactionId) {

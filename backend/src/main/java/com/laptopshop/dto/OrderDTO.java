@@ -15,6 +15,8 @@ public class OrderDTO {
     private Long userId;
     private Long branchId;
     private String status;
+    private String paymentMethod;
+    private String paymentStatus;
     private Double totalPrice;
     private Double discountAmount;
     private String voucherCode;

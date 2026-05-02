@@ -34,9 +34,33 @@ public class PaymentController {
     @GetMapping("/vnpay-callback")
     public ResponseEntity<Void> vnpayCallback(@RequestParam Map<String, String> params) {
         paymentService.processVnPayCallback(params);
-        // Redirect to frontend result page
         return ResponseEntity.status(302)
                 .header("Location", "http://localhost:3000/payment/result?status=" + params.get("vnp_ResponseCode"))
+                .build();
+    }
+
+    @PostMapping("/momo-callback")
+    public ResponseEntity<Void> momoCallback(@RequestBody Map<String, String> params) {
+        paymentService.processMomoCallback(params);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/zalopay-callback")
+    public ResponseEntity<Map<String, Object>> zalopayCallback(@RequestBody Map<String, Object> body) {
+        paymentService.processZaloPayCallback(body);
+        Map<String, Object> result = new java.util.HashMap<>();
+        result.put("return_code", 1);
+        result.put("return_message", "success");
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/stripe-success")
+    public ResponseEntity<Void> stripeSuccess(
+            @RequestParam Long orderId,
+            @RequestParam String sessionId) throws Exception {
+        paymentService.processStripeSuccess(orderId, sessionId);
+        return ResponseEntity.status(302)
+                .header("Location", "http://localhost:3000/payment/result?status=SUCCESS&orderId=" + orderId)
                 .build();
     }
 }
