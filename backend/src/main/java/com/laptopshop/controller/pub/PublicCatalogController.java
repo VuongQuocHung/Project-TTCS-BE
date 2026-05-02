@@ -32,7 +32,7 @@ public class PublicCatalogController {
 
     @GetMapping("/brands")
     public List<BrandDTO> getBrands() {
-        return brandService.getAllBrands();
+        return brandService.getAllBrands(false);
     }
 
     @GetMapping("/branches")

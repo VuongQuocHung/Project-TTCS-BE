@@ -40,6 +40,8 @@ public class User extends BaseEntity {
     private String resetToken;
     private java.time.LocalDateTime resetTokenExpiry;
 
+    private String verificationToken;
+
     private String provider;
     private String providerId;
 

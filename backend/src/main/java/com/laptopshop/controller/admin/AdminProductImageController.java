@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import io.swagger.v3.oas.annotations.Operation;
 
 import java.io.IOException;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/admin/products/upload-image")
@@ -25,15 +24,20 @@ public class AdminProductImageController {
 
     private final FileService fileService;
 
-    @Operation(summary = "Upload image file (multipart/form-data)")
+    @Operation(summary = "Upload multiple image files (multipart/form-data)")
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
-        String fileName = fileService.saveFile(file);
-        String fileUrl = "/uploads/" + fileName;
+    public ResponseEntity<java.util.List<java.util.Map<String, String>>> uploadFiles(@RequestParam("files") MultipartFile[] files) throws IOException {
+        java.util.List<java.util.Map<String, String>> results = new java.util.ArrayList<>();
         
-        return ResponseEntity.ok(Map.of(
-            "url", fileUrl,
-            "fileName", fileName
-        ));
+        for (MultipartFile file : files) {
+            String fileName = fileService.saveFile(file);
+            String fileUrl = "/uploads/" + fileName;
+            results.add(java.util.Map.of(
+                "url", fileUrl,
+                "fileName", fileName
+            ));
+        }
+        
+        return ResponseEntity.ok(results);
     }
 }

@@ -23,6 +23,8 @@ public class DataImportService {
     private final ProductRepository productRepository;
     private final ProductVariantRepository variantRepository;
     private final ProductImageRepository productImageRepository;
+    private final BranchRepository branchRepository;
+    private final InventoryRepository inventoryRepository;
     private final ObjectMapper objectMapper;
 
     @Value("${app.import.path}")
@@ -52,14 +54,17 @@ public class DataImportService {
                             .name(brandName)
                             .build()));
 
-            Product product = Product.builder()
-                    .name((String) rawProduct.get("name"))
-                    .description((String) rawProduct.get("description"))
-                    .category(category)
-                    .brand(brand)
-                    .build();
-
-            product = productRepository.save(product);
+            String productName = (String) rawProduct.get("name");
+            Product product = productRepository.findByName(productName).orElse(null);
+            if (product == null) {
+                product = Product.builder()
+                        .name(productName)
+                        .description((String) rawProduct.get("description"))
+                        .category(category)
+                        .brand(brand)
+                        .build();
+                product = productRepository.save(product);
+            }
 
             List<Map<String, Object>> rawVariants = (List<Map<String, Object>>) rawProduct.get("variants");
             for (Map<String, Object> rawVariant : rawVariants) {
@@ -88,6 +93,20 @@ public class DataImportService {
                                     .variant(variant)
                                     .build());
                         }
+                    }
+                }
+
+                // Add default inventory to all branches
+                List<Branch> branches = branchRepository.findAll();
+                for (Branch branch : branches) {
+                    InventoryId inventoryId = new InventoryId(branch.getId(), variant.getId());
+                    if (!inventoryRepository.existsById(inventoryId)) {
+                        inventoryRepository.save(Inventory.builder()
+                                .id(inventoryId)
+                                .branch(branch)
+                                .variant(variant)
+                                .quantity(100) // Default 100 units
+                                .build());
                     }
                 }
             }

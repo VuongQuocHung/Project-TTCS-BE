@@ -236,6 +236,8 @@ public class OrderService {
                 .userId(order.getUser().getId())
                 .branchId(order.getBranch().getId())
                 .status(order.getStatus().name())
+                .paymentMethod(order.getPaymentMethod() != null ? order.getPaymentMethod().name() : null)
+                .paymentStatus(order.getPaymentStatus() != null ? order.getPaymentStatus().name() : null)
                 .totalPrice(order.getTotalPrice())
                 .discountAmount(order.getDiscountAmount())
                 .voucherCode(order.getVoucher() != null ? order.getVoucher().getCode() : null)

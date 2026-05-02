@@ -36,4 +36,9 @@ public class PublicProductController {
     public ProductDTO getProduct(@PathVariable Long id) {
         return productService.getProduct(id);
     }
+
+    @GetMapping("/{id}/images")
+    public List<String> getProductImages(@PathVariable Long id) {
+        return productService.getProductImages(id);
+    }
 }
