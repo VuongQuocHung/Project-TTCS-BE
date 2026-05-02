@@ -33,6 +33,7 @@ public class AuthController {
     private final JwtTokenProvider tokenProvider;
     private final UserService userService;
     private final GoogleAuthService googleAuthService;
+    private final com.laptopshop.service.EmailService emailService;
 
     @PostMapping("/google")
     public ResponseEntity<AuthResponse> googleLogin(@Valid @RequestBody GoogleLoginRequest request) {
@@ -66,13 +67,22 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> authenticate(@Valid @RequestBody LoginRequest loginRequest) {
+        User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
+        if (!user.isEnabled()) {
+            return ResponseEntity.status(403).body(AuthResponse.builder().username(loginRequest.getUsername()).build()); // Or
+                                                                                                                         // a
+                                                                                                                         // custom
+                                                                                                                         // response
+                                                                                                                         // to
+                                                                                                                         // indicate
+                                                                                                                         // unverified
+        }
+
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginRequest.getUsername(), loginRequest.getPassword()));
 
         String token = tokenProvider.generateToken(authentication);
         String refreshToken = tokenProvider.generateRefreshToken(authentication);
-        
-        User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
         user.setRefreshToken(refreshToken);
         userRepository.save(user);
 
@@ -87,11 +97,11 @@ public class AuthController {
     @PostMapping("/refresh-token")
     public ResponseEntity<?> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
         String refreshToken = request.getRefreshToken();
-        
+
         if (tokenProvider.validateToken(refreshToken)) {
             String username = tokenProvider.getUsername(refreshToken);
             User user = userRepository.findByUsername(username).orElseThrow();
-            
+
             if (refreshToken.equals(user.getRefreshToken())) {
                 String newToken = tokenProvider.generateToken(username, 86400000); // 1 day access token
                 return ResponseEntity.ok(AuthResponse.builder()
@@ -102,7 +112,7 @@ public class AuthController {
                         .build());
             }
         }
-        
+
         return ResponseEntity.badRequest().body("Invalid refresh token");
     }
 
@@ -120,6 +130,8 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Passwords do not match!");
         }
 
+        String verificationToken = java.util.UUID.randomUUID().toString();
+
         User user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -128,12 +140,41 @@ public class AuthController {
                 .phoneNumber(request.getPhoneNumber())
                 .address(request.getAddress())
                 .role(Role.CUSTOMER)
-                .enabled(true)
+                .enabled(false) // User must verify email
+                .verificationToken(verificationToken)
                 .build();
-        
+
         userRepository.save(user);
 
-        return ResponseEntity.ok("User registered successfully!");
+        // Gửi email xác thực
+        try {
+            emailService.sendVerificationEmail(user.getEmail(), user.getFullName(), verificationToken);
+        } catch (Exception e) {
+            System.err.println("Failed to send verification email: " + e.getMessage());
+        }
+
+        return ResponseEntity.ok("User registered successfully! Please check your email to verify your account.");
+    }
+
+    @PostMapping("/verify-email")
+    public ResponseEntity<String> verifyEmail(@RequestBody java.util.Map<String, String> request) {
+        String token = request.get("token");
+        if (token == null || token.isBlank()) {
+            return ResponseEntity.badRequest().body("Token is required");
+        }
+
+        User user = userRepository.findByVerificationToken(token)
+                .orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.badRequest().body("Invalid verification token");
+        }
+
+        user.setEnabled(true);
+        user.setVerificationToken(null);
+        userRepository.save(user);
+
+        return ResponseEntity.ok("Email verified successfully. You can now login.");
     }
 
     @PostMapping("/forgot-password")
