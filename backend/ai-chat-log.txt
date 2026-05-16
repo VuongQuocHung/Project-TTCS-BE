@@ -1,0 +1,57 @@
+=================================================================
+=== THỜI GIAN: 2026-05-16T16:56:35.544947 ===
+=================================================================
+
+[1] CÂU HỎI TỪ NGƯỜI DÙNG:
+laptop đồ họa, asus, ram 16gb
+
+[1.2] PROMPT BÓC TÁCH (DATA EXTRACTOR):
+Bạn là một AI trích xuất dữ liệu (Data Extractor). Hãy đọc tin nhắn của người dùng và trích xuất các điều kiện tìm kiếm laptop dưới định dạng JSON chính xác.
+LƯU Ý: Tuyệt đối không được bịa dữ liệu. Chỉ sử dụng các giá trị ID được cung cấp dưới đây.
+
+Các trường của JSON:
+- keyword: CHỈ dùng để lọc Tên Dòng Máy hoặc Model (ví dụ: XPS, Thinkpad, Pavilion, Victus, Inspiron, MacBook). TUYỆT ĐỐI KHÔNG đưa các tính từ (tốt, đẹp, rẻ, mượt) hoặc nhu cầu (chơi game, văn phòng) vào trường này. Trả về null nếu không có.
+- brandId: BẮT BUỘC CHỌN 1 ID TRONG DANH SÁCH SAU NẾU CÓ, KHÔNG CÓ TRẢ VỀ null: [1 - Dell, 2 - HP, 3 - Acer, 4 - Asus, 5 - Other, 6 - Lenovo, 7 - Apple, 8 - MSI].
+- categoryId: BẮT BUỘC CHỌN 1 ID TRONG DANH SÁCH SAU NẾU CÓ, KHÔNG CÓ TRẢ VỀ null: [1 - Học tập, Văn phòng, 2 - Gaming, 3 - Đồ họa, Kỹ thuật, 4 - Mỏng nhẹ, Cao cấp].
+- minPrice: Giá tối thiểu (kiểu số nguyên). Ví dụ: 10 triệu -> 10000000. Trả về null nếu không có.
+- maxPrice: Giá tối đa (kiểu số nguyên). Ví dụ: 20 triệu -> 20000000. Trả về null nếu không có.
+- cpu: Thông tin CPU (ví dụ: i5, i7, Ryzen 5, Ultra 7). Trả về null nếu không có.
+- ram: Thông tin RAM (ví dụ: 8GB, 16GB, 32GB). Trả về null nếu không có.
+- storage: Thông tin Ổ cứng (ví dụ: 512GB, 1TB). Trả về null nếu không có.
+- gpu: Thông tin Card đồ họa (ví dụ: RTX 4050, RTX 3060). Trả về null nếu không có.
+- screen: Thông tin Màn hình (ví dụ: 14 inch, 15.6 inch, OLED). Trả về null nếu không có.
+
+Tin nhắn: "laptop đồ họa, asus, ram 16gb"
+
+CHỈ TRẢ VỀ JSON, KHÔNG GIẢI THÍCH GÌ THÊM. KHÔNG DÙNG ```json.
+
+[1.5] KẾT QUẢ AI BÓC TÁCH REQUEST (ProductFilterRequest):
+JSON: ProductFilterRequest(keyword=null, categoryId=3, brandId=4, minPrice=null, maxPrice=null, cpu=null, ram=16GB, storage=null, gpu=null, screen=null, os=null, sortBy=null, sortDir=null)
+
+[2] PROMPT GỬI AI:
+You are a laptop shop assistant. Answer in Vietnamese.
+Suggest suitable products from the list when relevant.
+
+Available products:
+- id: 88, name: Asus Vivobook 15 X1502VA: Thiết kế cực sang đẹp - Cấu hình KHỎE, RẺ nhất i7 13620H - Học tập, chơi game đều cân mượt, brand: Asus, category: Đồ họa, Kỹ thuật
+- id: 85, name: Review chi tiết chiếc Asus ExpertBook P5 P5405CSA-NZ0016W - Hiệu năng và màn hình thì ngon đấy, nhưng có 1 thứ cần cân nhắc trước khi xuống tiền, brand: Asus, category: Đồ họa, Kỹ thuật
+- id: 58, name: Asus Expertbook P3 P3605CVA - NGON NHẤT TẦM GIÁ - Thiết kế gọn nhẹ, bền đẹp - Hiệu năng khỏe, RAM nâng max 64GB - Màn 2.5K, chuẩn màu 100% sRGB, 144Hz cực mượt, brand: Asus, category: Đồ họa, Kỹ thuật
+- id: 46, name: Asus Expertbook P1 P1403 - Sự lựa chọn cực ngon cho dân IT - Hiệu năng khỏe, RAM nâng max 64GB - Bảo mật cực tốt, brand: Asus, category: Đồ họa, Kỹ thuật
+- id: 45, name: Asus ExpertBook P1 P1403CVA-i516-50W - Chiếc laptop văn phòng dùng cực ổn định 7-10 năm - Chip H5 khỏe, RAM nâng max tới 64GB làm đa nhiệm cực mượt - Build bền đẹp, brand: Asus, category: Đồ họa, Kỹ thuật
+
+User question: laptop đồ họa, asus, ram 16gb
+Provide a concise helpful answer and include product ids if you recommend any.
+IMPORTANT: If the 'Available products' list is empty, you MUST politely reply 'Xin lỗi, hiện tại cửa hàng không có sản phẩm nào hoàn toàn khớp với yêu cầu của bạn.' and DO NOT hallucinate or recommend any other products.
+
+[3] CÂU TRẢ LỜI CỦA AI:
+Chào anh/chị, với yêu cầu laptop đồ họa, thương hiệu Asus và RAM 16GB, cửa hàng có một số sản phẩm phù hợp sau đây:
+
+*   **Asus ExpertBook P1 P1403CVA-i516-50W (id: 45)**: Đây là lựa chọn rất tốt cho dân văn phòng và cả đồ họa, với chip H5 khỏe, RAM nâng cấp tối đa 64GB, và tên model "i516" gợi ý sẵn 16GB RAM.
+*   **Asus Expertbook P1 P1403 (id: 46)**: Cũng là một lựa chọn cực ngon cho dân IT và đồ họa, với hiệu năng khỏe và RAM có thể nâng cấp tối đa 64GB, chắc chắn đáp ứng được cấu hình 16GB RAM.
+*   **Asus Expertbook P3 P3605CVA (id: 58)**: Thiết kế gọn nhẹ, hiệu năng khỏe, RAM nâng cấp tối đa 64GB và màn hình 2.5K chuẩn màu 100% sRGB cực mượt, rất lý tưởng cho công việc đồ họa.
+
+Anh/chị quan tâm đến mẫu nào, hoặc muốn tìm hiểu thêm về các tính năng cụ thể không ạ?
+
+[4] SUGGESTIONS:
+[com.laptopshop.dto.AiProductSuggestion@61076d67, com.laptopshop.dto.AiProductSuggestion@3f77d8cf, com.laptopshop.dto.AiProductSuggestion@44a019a6, com.laptopshop.dto.AiProductSuggestion@4eb6ebeb, com.laptopshop.dto.AiProductSuggestion@1400db0f]
+
